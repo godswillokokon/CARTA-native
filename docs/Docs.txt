@@ -1,0 +1,17 @@
+CY:[
+    Home Screen: {
+        On the Home screen, A dependency called SWIPPER
+        I created two componet which are Home and SWIPPe.js
+        
+    },
+]
+
+OG: [
+    Sign-in Screen: {
+        native base was use for most of the styling of this screen,
+        some fontawesome icons and ionic icons were used, for the remember me button, 
+        I had to manage states to tick and untick the checkbox, 
+        although it's not perfect just yet. 
+    },
+]
+
