@@ -6,7 +6,7 @@ import { login, resetFailureAction, refreshAuthentication, GetUserData, logout }
 import styles from "./sigupStyle";
 import { connect } from "react-redux";
 
- class SignUp extends Component {
+export default class SignUp extends Component {
   static navigationOptions = {
     header: null
   };
@@ -163,9 +163,9 @@ const mapDispatchToProps = dispatch => ({
   getUser: token => dispatch(GetUserData(token)),
   refreshAuthentication: token => dispatch(refreshAuthentication(token))
 });
-  
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SignUp);
+
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(SignUp);
 AppRegistry.registerComponent("CARTA-SignUp", () => SignUp);
