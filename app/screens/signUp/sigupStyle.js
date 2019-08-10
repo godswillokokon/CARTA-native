@@ -1,4 +1,4 @@
-import { StyleSheet, Platform} from "react-native";
+import { StyleSheet, Platform } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     left: 275,
     bottom: 140,
     padding: 15,
-    backgroundColor: "#7151e4",
+    backgroundColor: "#652d90",
     borderRadius: 300,
     height: 70,
     width: 70

@@ -87,7 +87,7 @@ export default class SignUp extends Component {
                 />
               </Item>
               <ListItem style={styles.remBtn}>
-                <CheckBox checked={this.state.checked} color={"#7151e4"} onPress={this.Clicked.bind(this)} />
+                <CheckBox checked={this.state.checked} color={"#652d90"} onPress={this.Clicked.bind(this)} />
                 <Body>
                   <Text style={{ color: "grey" }} onPress={this.Clicked.bind(this)}>
                     Remember Login
