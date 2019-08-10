@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     marginBottom: 30,
-    borderColor: '#7151e4',
+    borderColor: '#652d90',
   },
   butText: {
     color: '#fff',
