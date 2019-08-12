@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { View, Image, Dimensions, AppRegistry, TextInput, TouchableOpacity, ImageBackground } from "react-native";
 import { Container, Content, Form, Item, Input, Left, Button, Text, CheckBox, Body, ListItem } from "native-base";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import { login, resetFailureAction, refreshAuthentication, GetUserData, logout } from "../../redux/actions/UserActions";
 import styles from "./sigupStyle";
-import { connect } from "react-redux";
+
+
 
  class SignUp extends Component {
   static navigationOptions = {
@@ -42,7 +44,8 @@ import { connect } from "react-redux";
     // if (!this.state.checked) return console.log("unchecked");
   }
   _simulateLogin = (email, password) => {
-    console.log(email, password);
+    // console.log(email, password);
+    console.log(this.state.password);
     // this.setState({ isLoading: true });
     // this.props.onLogin({ mobile, password });
   };
@@ -70,7 +73,7 @@ import { connect } from "react-redux";
                   name={"email"}
                   type="email"
                   returnKeyType="next"
-                  onChange={(value) => this.setState({ email: value })}
+                  onChangeText={(value) => this.setState({ email: value })}
                 />
               </Item>
 
@@ -83,7 +86,7 @@ import { connect } from "react-redux";
                   secureTextEntry={true}
                   returnKeyType="done"
                   placeholder="Password"
-                  onChange={(value) => this.setState({ pasword: value })}
+                  onChangeText={(value) => this.setState({ password: value })}
                 />
               </Item>
               <ListItem style={styles.remBtn}>
@@ -163,9 +166,8 @@ const mapDispatchToProps = dispatch => ({
   getUser: token => dispatch(GetUserData(token)),
   refreshAuthentication: token => dispatch(refreshAuthentication(token))
 });
-  
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(SignUp);
-AppRegistry.registerComponent("CARTA-SignUp", () => SignUp);
+// AppRegistry.registerComponent("CARTA-SignUp", () => SignUp);
