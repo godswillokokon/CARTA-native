@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   View,
@@ -8,7 +8,7 @@ import {
   Dimensions,
   Image,
 } from 'react-native';
-import {Button} from 'native-base';
+import { Button } from 'native-base';
 import Swipe from './swiper';
 import renderIf from '../renderIf';
 
@@ -16,45 +16,40 @@ export default class Home extends Component {
   static navigationOptions = {
     header: null,
   };
-  constructor () {
-    super ();
+  constructor() {
+    super();
     this.state = {
       data: false,
     };
   }
   onChange = data => {
-    this.setState ({data: data});
+    this.setState({ data: data });
   };
-  render () {
-    const device_width = Dimensions.get ('window').width;
-    const device_height = Dimensions.get ('window').height;
-    const {data} = this.state;
+  render() {
+    const device_width = Dimensions.get('window').width;
+    const device_height = Dimensions.get('window').height;
+    const { data } = this.state;
     return (
       <ImageBackground
-        source={require ('../../../assets/carta3.jpeg')}
+        source={require('../../../assets/carta3.jpeg')}
         style={{
           height: device_height,
           width: device_width,
         }}
       >
         <View style={styles.container}>
-          <Text style={styles.photo}>
-            <Image
-              source={require ('../../../assets/splash.png')}
-              style={{width: 500 / 2, height: 150}}
-            />
-          </Text>
+
           <Swipe data={data} onChange={this.onChange} />
 
           <View style={styles.button}>
-            {renderIf (
+            {renderIf(
               this.state.data,
               <Button
                 bordered
                 info
                 style={styles.but}
                 rounded
-                onPress={() => this.props.navigation.navigate ('Login')}
+                onPress={() => this.props.navigation.navigate('Login')}
               >
                 <Text style={styles.butText}>Sign in</Text>
               </Button>
@@ -68,9 +63,9 @@ export default class Home extends Component {
     );
   }
 }
-AppRegistry.registerComponent ('CARTA-Home', () => Home);
+AppRegistry.registerComponent('CARTA-Home', () => Home);
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
@@ -95,7 +90,7 @@ const styles = StyleSheet.create ({
     justifyContent: 'center',
     alignSelf: 'center',
     marginBottom: 30,
-    borderColor: '#7151e4',
+    borderColor: '#652d90',
   },
   butText: {
     color: '#fff',

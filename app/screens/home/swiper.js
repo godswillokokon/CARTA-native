@@ -16,64 +16,64 @@ export default class Swipe extends Component {
     }
   }
   render() {
-    return <Swiper style={styles.wrapper} 
-    showsButtons={false} 
-    autoplay autoplayTimeout={10.0} 
-    loop={false} 
-    activeDotColor={'#7151e4'}
-    onIndexChanged={index => {
-          if (index == 3) {
-            this.props.onChange(true);
-          }
-          
-        }}>
-        <View style={styles.slide}>
-          <View style={styles.circle}>
-            <Text style={styles.text}>
-              <FontAwesome name="user-secret" size={40} color={"#7151e4"} />
-            </Text>
-          </View>
-          <Text style={styles.text}>Police Alert</Text>
-          <Text style={styles.textP}>
-            Quick Reports of Stolen Vehicles To The Police.
-          </Text>
-        </View>
-        <View style={styles.slide}>
-          <View style={styles.circle}>
-            <Text style={styles.text}>
-            <FontAwesome name="chain-broken" size={40} color={"#7151e4"} />
-            </Text>
-          </View>
-          <Text style={styles.text}>Kill Switch</Text>
-          <Text style={styles.textP}>
-            Kill Stolen Vehicle's Engine With A Button.
-          </Text>
-        </View>
+    return <Swiper style={styles.wrapper}
+      showsButtons={false}
+      autoplay autoplayTimeout={10.0}
+      loop={false}
+      activeDotColor={'#652d90'}
+      onIndexChanged={index => {
+        if (index == 3) {
+          this.props.onChange(true);
+        }
 
-        <View style={styles.slide}>
-          <View style={styles.circle}>
-            <Text style={styles.text}>
-            <FontAwesome name="map-marker" size={40} color={"#7151e4"} />
-            </Text>
-          </View>
-          <Text style={styles.text}>Map Tracking </Text>
-          <Text style={styles.textP}>
-            Keep Track of Your Vehicle's Location.
+      }}>
+      <View style={styles.slide}>
+        <View style={styles.circle}>
+          <Text style={styles.text}>
+            <FontAwesome name="user-secret" size={40} color={"#652d90"} />
           </Text>
         </View>
-        <View style={styles.slide}>
-          <View style={styles.circle}>
-            <Text style={styles.text}>
-            <FontAwesome name="feed" size={40} color={"#7151e4"} />
-            </Text>
-          </View>
-          <Text style={styles.text}> Dial *090*Vehicle-ID# </Text>
-          <Text style={styles.textP}>
-            Report To The Police And Kill The Vehicle's Engine When Your
-            Vehicle is Stolen Using USSD.
+        <Text style={styles.text}>Police Alert</Text>
+        <Text style={styles.textP}>
+          Quick Reports of Stolen Vehicles To The Police.
+          </Text>
+      </View>
+      <View style={styles.slide}>
+        <View style={styles.circle}>
+          <Text style={styles.text}>
+            <FontAwesome name="chain-broken" size={40} color={"#652d90"} />
           </Text>
         </View>
-      </Swiper>;
+        <Text style={styles.text}>Kill Switch</Text>
+        <Text style={styles.textP}>
+          Kill Stolen Vehicle's Engine With A Button.
+          </Text>
+      </View>
+
+      <View style={styles.slide}>
+        <View style={styles.circle}>
+          <Text style={styles.text}>
+            <FontAwesome name="map-marker" size={40} color={"#652d90"} />
+          </Text>
+        </View>
+        <Text style={styles.text}>Map Tracking </Text>
+        <Text style={styles.textP}>
+          Keep Track of Your Vehicle's Location.
+          </Text>
+      </View>
+      <View style={styles.slide}>
+        <View style={styles.circle}>
+          <Text style={styles.text}>
+            <FontAwesome name="feed" size={40} color={"#652d90"} />
+          </Text>
+        </View>
+        <Text style={styles.text}> Dial *090*Vehicle-ID# </Text>
+        <Text style={styles.textP}>
+          Report To The Police And Kill The Vehicle's Engine When Your
+          Vehicle is Stolen Using USSD.
+          </Text>
+      </View>
+    </Swiper>;
   }
 }
 AppRegistry.registerComponent('swiper', () => Swiper);

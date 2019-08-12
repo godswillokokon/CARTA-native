@@ -8,7 +8,7 @@ import styles from "./sigupStyle";
 
 
 
- class SignUp extends Component {
+class SignUp extends Component {
   static navigationOptions = {
     header: null
   };
@@ -90,7 +90,7 @@ import styles from "./sigupStyle";
                 />
               </Item>
               <ListItem style={styles.remBtn}>
-                <CheckBox checked={this.state.checked} color={"#7151e4"} onPress={this.Clicked.bind(this)} />
+                <CheckBox checked={this.state.checked} color={"#652d90"} onPress={this.Clicked.bind(this)} />
                 <Body>
                   <Text style={{ color: "grey" }} onPress={this.Clicked.bind(this)}>
                     Remember Login
