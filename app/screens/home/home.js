@@ -7,12 +7,19 @@ import {
   ImageBackground,
   Dimensions,
   Image,
+  AsyncStorage,
 } from 'react-native';
+import { connect } from "react-redux";
+import get from "lodash/get";
+import Axios from "@utils/Axios";
+import jwt_decode from "jwt-decode"
 import { Button } from 'native-base';
 import Swipe from './swiper';
 import renderIf from '../renderIf';
+import Session from "../../utils/Session";
+import { resetFailureAction, refreshAuthentication, GetUserData, logout } from "../../redux/actions/UserActions";
 
-export default class Home extends Component {
+ class Home extends Component {
   static navigationOptions = {
     header: null,
   };
@@ -20,7 +27,48 @@ export default class Home extends Component {
     super();
     this.state = {
       data: false,
+      isLoggedIn: false,
+      isLoading: false,
+      isAppReady: false,
+      authError: null,
+      authReady: false,
+      tokenValidity: null
     };
+  }
+  async componentDidMount() {
+    const checkForToken = await AsyncStorage.getItem("token");
+    this.loadAsync().then(token => {
+      // this.setState({ isLoggedIn: true, isLoading: false })
+      if (token) {
+        // Decode token and get user info and exp
+        const decoded = jwt_decode(token);
+        const currentTime = Date.now() / 1000; // to get in milliseconds
+        if (decoded.exp < currentTime) {
+          // Logout user
+          this.logout();
+          return;
+        }
+
+        this.props.refreshAuthentication(token);
+      }
+    });
+  }
+  loadAsync = async () => {
+    //load all required info
+    //user info, auth state..etc
+    const getToken = await Session.getData("token");
+    if (getToken) {
+      await this.props.getUser(getToken);
+    }
+    return getToken;
+  };
+  async componentDidUpdate(prevProps, prevState) {
+    if (get(prevProps.auth, "token") !== get(this.props.auth, "token")) {
+      return this.props.navigation.navigate("Garage");
+    } else if (prevProps.auth.authError !== this.props.auth.authError) {
+      this._onError(this.props.auth.authError);
+      this.setState({ isLoading: false });
+    }
   }
   onChange = data => {
     this.setState({ data: data });
@@ -63,7 +111,23 @@ export default class Home extends Component {
     );
   }
 }
-AppRegistry.registerComponent('CARTA-Home', () => Home);
+const mapStateToProps = ({ user }) => ({
+  auth: user
+});
+
+const mapDispatchToProps = dispatch => ({
+  // onLogin: data => dispatch(login(data)),
+  onLogout: () => dispatch(logout()),
+  // onSignUp: data => dispatch(createAccount(data)),
+  resetFailureAction: () => dispatch(resetFailureAction()),
+  getUser: token => dispatch(GetUserData(token)),
+  refreshAuthentication: token => dispatch(refreshAuthentication(token))
+});
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);
+// AppRegistry.registerComponent('CARTA-Home', () => Home);
 
 const styles = StyleSheet.create({
   container: {

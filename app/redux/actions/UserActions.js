@@ -1,18 +1,19 @@
 import Axios from "@utils/Axios";
 // import * as types from "../types";
-import Session from "@utils/Session";
-import SupportHeader from "@utils/SupportHeader";
+import Session from "../../utils/Session";
+import SupportHeader from "../../utils/SupportHeader";
 
 export const login = data => async dispatch => {
   try {
     const response = await Axios.post(`/login`, { ...data });
-    const saveToken = Session.saveToken(response.data.token.accessToken);
-    Session.saveUser(response.data.user);
-    await StaticStoreUserData(response.data.user)(dispatch);
+    console.log(response.data.success.token);
+    const saveToken = Session.saveToken(response.data.success.token);
+    // Session.saveUser(response.data.user);
+    // await StaticStoreUserData(response.data.user)(dispatch);
     if (saveToken) {
       await dispatch({
         type: "USER_LOGIN_SUCCESS",
-        payload: response.data.token.accessToken
+        payload: response.data.success.token
       });
     }
   } catch (e) {
@@ -46,11 +47,11 @@ export const logout = () => dispatch => {
 
 export const createAccount = data => async dispatch => {
   try {
-    const response = await Axios.post(`/auth/register`, { ...data });
-    // dispatch({
-    //   type: "USER_LOGIN_SUCCESS",
-    //   payload: response.data
-    // });
+    const response = await Axios.post(`/register`, { ...data });
+    dispatch({
+      type: "USER_LOGIN_SUCCESS",
+      payload: response.data
+    });
     login(data)(dispatch);
   } catch (e) {
     dispatch({
@@ -82,7 +83,7 @@ export const refreshAuthentication = token => async dispatch => {
 export const GetUserData = token => async dispatch => {
   try {
     const response = await Axios.get("/users/profile", await SupportHeader());
-    Session.saveUser(response.data);
+    // Session.saveUser(response.data);
     dispatch({
       type: "USER_DATA",
       payload: { ...response.data }

@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
     borderColor: "white"
   },
   icons: {
-    marginRight: 20
+    marginRight: 20,
+    paddingRight: 100
   },
   loginBtn: {
     left: 275,

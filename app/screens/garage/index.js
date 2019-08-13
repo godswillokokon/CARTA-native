@@ -27,7 +27,7 @@ export default class Garage extends Component {
         <View style={styles.card} key={i}>
           <View style={styles.car}>
             <ImageBackground
-              source={require("../../assets/resetPassword.jpg")}
+              source={require("../../../assets/resetPassword.jpg")}
               style={{ height: "100%", width: "100%", borderRadius: 100 }}
             />
           </View>

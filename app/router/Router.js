@@ -2,6 +2,8 @@ import React from "react";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator, createDrawerNavigator } from "react-navigation";
 import Home from "../screens/home/home";
 import Login from "../screens/signUp/signUp";
+import Garage from "../screens/garage"
+import Register from "../screens/register/register"
 // import MainScreen from 'app/screens/home/home.js'
 // const homeNavigator = createStackNavigator ({
 //   Home: {
@@ -24,6 +26,14 @@ const MainNavigator = createStackNavigator({
   },
   Login: {
     screen: Login,
+    navigationOptions: { header: null }
+  },
+  Register: {
+    screen: Register,
+    navigationOptions: { header: null }
+  },
+  Garage: {
+    screen: Garage,
     navigationOptions: { header: null }
   }
 });

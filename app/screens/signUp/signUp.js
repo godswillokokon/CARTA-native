@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { View, Image, Dimensions, AppRegistry, TextInput, TouchableOpacity, ImageBackground } from "react-native";
-import { Container, Content, Form, Item, Input, Left, Button, Text, CheckBox, Body, ListItem } from "native-base";
+import { Container, Content, Form, Item, Input, Left, Button, Text, CheckBox, Body, ListItem, Label } from "native-base";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import { login, resetFailureAction, refreshAuthentication, GetUserData, logout } from "../../redux/actions/UserActions";
 import styles from "./sigupStyle";
-
-
 
 class SignUp extends Component {
   static navigationOptions = {
@@ -44,10 +42,8 @@ class SignUp extends Component {
     // if (!this.state.checked) return console.log("unchecked");
   }
   _simulateLogin = (email, password) => {
-    // console.log(email, password);
-    console.log(this.state.password);
-    // this.setState({ isLoading: true });
-    // this.props.onLogin({ mobile, password });
+    this.setState({ isLoading: true });
+    this.props.onLogin({ email, password });
   };
 
   render() {
@@ -65,28 +61,38 @@ class SignUp extends Component {
           </Text>
           <Content style={{ top: 30 }}>
             <Form>
-              <Item style={[styles.loginMidLine]}>
-                <FontAwesome name="user" size={25} color={"grey"} style={styles.icons} />
+              <Item style={[styles.loginMidLine]} floatingLabel>
+                <Label>
+                  <FontAwesome name="user" size={25} color={"grey"} style={styles.icons} />
+                    Email
+                </Label>
+                
                 <Input
                   ref={ref => (this.textInputRef = ref)}
-                  placeholder="Email"
+                  // placeholder="Email"
                   name={"email"}
                   type="email"
                   returnKeyType="next"
-                  onChangeText={(value) => this.setState({ email: value })}
+                  onChangeText={value => this.setState({ email: value })}
+                  isEnabled={!this.state.isLoading}
                 />
               </Item>
 
-              <Item style={[styles.logins]}>
-                <FontAwesome name="lock" size={25} color={"grey"} style={styles.icons} />
+              <Item style={[styles.logins]} floatingLabel >
+                <Label>
+                  <FontAwesome name="lock" size={25} color={"grey"} style={styles.icons} />
+                  Password
+                </Label>
+
                 <Input
                   ref={ref => (this.passwordInputRef = ref)}
                   name={"password"}
                   type="password"
                   secureTextEntry={true}
                   returnKeyType="done"
-                  placeholder="Password"
-                  onChangeText={(value) => this.setState({ password: value })}
+                  // placeholder="Password"
+                  onChangeText={value => this.setState({ password: value })}
+                  isEnabled={!this.state.isLoading}
                 />
               </Item>
               <ListItem style={styles.remBtn}>
@@ -106,7 +112,7 @@ class SignUp extends Component {
               </Button>
             </Form>
             <View>
-              <ListItem icon style={styles.lowerBody} onPress={() => this.props.navigation.navigate("register")}>
+              <ListItem icon style={styles.lowerBody} onPress={() => this.props.navigation.navigate("Register")}>
                 <Left>
                   <Button disabled style={{ backgroundColor: "#FF9501" }}>
                     <FontAwesome active name="unlock" />
