@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Platform, Image, Dimensions, AppRegistry, TouchableOpacity, ImageBackground } from "react-native";
+import { View, StyleSheet, Platform, Image, Dimensions, ActivityIndicator, TouchableOpacity, ImageBackground } from "react-native";
 import { Container, Content, Form, Item, Input, Left, Button, Text, CheckBox, Body, ListItem } from "native-base";
 import { connect } from "react-redux";
 import { createAccount, resetFailureAction, refreshAuthentication, GetUserData, logout } from "../../redux/actions/UserActions";
@@ -132,7 +132,11 @@ class Register extends Component {
                   )
                 }
               >
-                <FontAwesome name="sign-in" size={50} color={"white"} />
+                {this.state.isLoading ? (
+                  <ActivityIndicator style={styles.spinner} size="large" color={"white"} />
+                ) : (
+                    <FontAwesome name="sign-in" size={45} color={"white"} />
+                  )}
               </Button>
             </Form>
             <TouchableOpacity onPress={() => this.props.navigation.navigate("signUp")} style={[styles.login]}>
@@ -215,6 +219,12 @@ const styles = StyleSheet.create({
     opacity: 0.61,
     alignItems: "center",
     justifyContent: "center"
+  },
+  spinner: {
+    height: 45,
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
   },
   showPassword: {
     // borderColor: "black",

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Text,
   View,
@@ -8,20 +8,22 @@ import {
   Dimensions,
   Image,
   AsyncStorage,
-} from 'react-native';
+  ActivityIndicator
+} from "react-native";
+import { AppLoading } from "expo";
 import { connect } from "react-redux";
 import get from "lodash/get";
 import Axios from "@utils/Axios";
-import jwt_decode from "jwt-decode"
-import { Button } from 'native-base';
-import Swipe from './swiper';
-import renderIf from '../renderIf';
+import jwt_decode from "jwt-decode";
+import { Button } from "native-base";
+import Swipe from "./swiper";
+import renderIf from "../renderIf";
 import Session from "../../utils/Session";
 import { resetFailureAction, refreshAuthentication, GetUserData, logout } from "../../redux/actions/UserActions";
 
- class Home extends Component {
+class Home extends Component {
   static navigationOptions = {
-    header: null,
+    header: null
   };
   constructor() {
     super();
@@ -70,45 +72,73 @@ import { resetFailureAction, refreshAuthentication, GetUserData, logout } from "
       this.setState({ isLoading: false });
     }
   }
+  getTokenValidity = async () => {
+    try {
+      const multiGetKeys = await AsyncStorage.multiGet(["token", "user"]);
+      // const user = multiGetKeys[1][1] ? parse(multiGetKeys[1][1]) : null;
+      // const response = await Axios.get(`/users/${user.id}/verifyUser`);
+      return this.setState({
+        // tokenValidity: response.status
+      });
+    } catch (e) {
+      // console.log(e, e.response);
+    }
+  };
+  routeToRightView(data) {
+    if (this.state.tokenValidity === 200 || this.state.tokenValidity === 201) {
+      this.props.navigation.navigate("Garage");
+    } else {
+      this.setState({ authReady: true });
+    }
+  }
   onChange = data => {
     this.setState({ data: data });
   };
   render() {
-    const device_width = Dimensions.get('window').width;
-    const device_height = Dimensions.get('window').height;
+    const device_width = Dimensions.get("window").width;
+    const device_height = Dimensions.get("window").height;
     const { data } = this.state;
-    return (
-      <ImageBackground
-        source={require('../../../assets/carta3.jpeg')}
-        style={{
-          height: device_height,
-          width: device_width,
-        }}
-      >
-        <View style={styles.container}>
+    if (this.state.authReady) {
+      return (
+        <ImageBackground
+          source={require("../../../assets/carta3.jpeg")}
+          style={{
+            height: device_height,
+            width: device_width
+          }}
+        >
+          <View style={styles.container}>
+            <Swipe data={data} onChange={this.onChange} />
 
-          <Swipe data={data} onChange={this.onChange} />
-
-          <View style={styles.button}>
-            {renderIf(
-              this.state.data,
-              <Button
-                bordered
-                info
-                style={styles.but}
-                rounded
-                onPress={() => this.props.navigation.navigate('Login')}
-              >
-                <Text style={styles.butText}>Sign in</Text>
-              </Button>
-            )}
-
+            <View style={styles.button}>
+              {renderIf(
+                this.state.data,
+                <Button bordered info style={styles.but} rounded onPress={() => this.props.navigation.navigate("Login")}>
+                  <Text style={styles.butText}>Sign in</Text>
+                </Button>
+              )}
+            </View>
           </View>
-
+        </ImageBackground>
+      );
+    } else {
+      return (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          <AppLoading
+            startAsync={() => this.getTokenValidity()}
+            onFinish={() => this.routeToRightView()}
+            onError={console.warn}
+          />
+          <ActivityIndicator size={"large"} />
         </View>
-
-      </ImageBackground>
-    );
+      );
+    }
   }
 }
 const mapStateToProps = ({ user }) => ({
@@ -131,38 +161,38 @@ export default connect(
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   circle: {
     borderRadius: 500,
-    backgroundColor: 'whitesmoke',
+    backgroundColor: "whitesmoke",
     height: 130,
     width: 130,
-    justifyContent: 'center',
-    alignSelf: 'center',
-    marginTop: 50,
+    justifyContent: "center",
+    alignSelf: "center",
+    marginTop: 50
   },
   button: {
     height: 80,
     width: 130,
-    justifyContent: 'center',
-    alignSelf: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignSelf: "center",
+    alignItems: "center"
   },
   but: {
     width: 100,
-    justifyContent: 'center',
-    alignSelf: 'center',
+    justifyContent: "center",
+    alignSelf: "center",
     marginBottom: 30,
-    borderColor: '#652d90',
+    borderColor: "#652d90"
   },
   butText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold"
   },
   photo: {
     // alignSelf: "flex-start",
-    right: -29,
-  },
+    right: -29
+  }
 });

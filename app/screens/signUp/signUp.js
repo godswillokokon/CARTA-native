@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View, Image, Dimensions, AppRegistry, TextInput, TouchableOpacity, ImageBackground } from "react-native";
+import { View, Image, Dimensions, ActivityIndicator, ImageBackground } from "react-native";
+import { AppLoading } from "expo";
 import { Container, Content, Form, Item, Input, Left, Button, Text, CheckBox, Body, ListItem, Label } from "native-base";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import { login, resetFailureAction, refreshAuthentication, GetUserData, logout } from "../../redux/actions/UserActions";
@@ -64,9 +65,9 @@ class SignUp extends Component {
               <Item style={[styles.loginMidLine]} floatingLabel>
                 <Label>
                   <FontAwesome name="user" size={25} color={"grey"} style={styles.icons} />
-                    Email
+                  Email
                 </Label>
-                
+
                 <Input
                   ref={ref => (this.textInputRef = ref)}
                   // placeholder="Email"
@@ -78,7 +79,7 @@ class SignUp extends Component {
                 />
               </Item>
 
-              <Item style={[styles.logins]} floatingLabel >
+              <Item style={[styles.logins]} floatingLabel>
                 <Label>
                   <FontAwesome name="lock" size={25} color={"grey"} style={styles.icons} />
                   Password
@@ -108,7 +109,11 @@ class SignUp extends Component {
                 style={styles.loginBtn}
                 onPress={() => this._simulateLogin(this.state.email, this.state.password)}
               >
-                <FontAwesome name="sign-in" size={45} color={"white"} />
+                {this.state.isLoading ? (
+                  <ActivityIndicator style={styles.spinner} size="large" color={"white"} />
+                ) : (
+                  <FontAwesome name="sign-in" size={45} color={"white"} />
+                )}
               </Button>
             </Form>
             <View>

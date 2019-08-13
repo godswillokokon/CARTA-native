@@ -18,6 +18,12 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     borderColor: "white"
   },
+  spinner: {
+    height: 45,
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+  },
   icons: {
     marginRight: 20,
     paddingRight: 100
