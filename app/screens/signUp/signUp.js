@@ -40,9 +40,11 @@ export default class SignUp extends Component {
     this.state.checked ? this.UnCheckBox() : this.CheckBox();
     // if (this.state.checked) return console.log("checked");
     // if (!this.state.checked) return console.log("unchecked");
+
   }
   _simulateLogin = (email, password) => {
-    console.log(email, password);
+    console.log(this.state.email);
+    console.log(this.state.password);
     // this.setState({ isLoading: true });
     // this.props.onLogin({ mobile, password });
   };
@@ -53,6 +55,8 @@ export default class SignUp extends Component {
     const device_height = Dimensions.get("window").height;
     // console.log("your phone height is ",device_height);
     // console.log("your phone width is ",device_width);
+
+
 
     return (
       <Container style={styles.container}>
@@ -70,7 +74,7 @@ export default class SignUp extends Component {
                   name={"email"}
                   type="email"
                   returnKeyType="next"
-                  onChange={(value) => this.setState({ email: value })}
+                  onChangeText={(value) => this.setState({ email: value })}
                 />
               </Item>
 
@@ -83,7 +87,7 @@ export default class SignUp extends Component {
                   secureTextEntry={true}
                   returnKeyType="done"
                   placeholder="Password"
-                  onChange={(value) => this.setState({ pasword: value })}
+                  onChangeText={(value) => this.setState({ password: value })}
                 />
               </Item>
               <ListItem style={styles.remBtn}>
@@ -98,12 +102,13 @@ export default class SignUp extends Component {
                 rounded
                 style={styles.loginBtn}
                 onPress={() => this._simulateLogin(this.state.email, this.state.password)}
+
               >
                 <FontAwesome name="sign-in" size={45} color={"white"} />
               </Button>
             </Form>
             <View>
-              <ListItem icon style={styles.lowerBody} onPress={() => this.props.navigation.navigate("register")}>
+              <ListItem icon style={styles.lowerBody} onPress={() => this.props.navigation.navigate("Single")}>
                 <Left>
                   <Button disabled style={{ backgroundColor: "#FF9501" }}>
                     <FontAwesome active name="unlock" />

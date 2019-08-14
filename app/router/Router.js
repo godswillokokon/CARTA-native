@@ -2,6 +2,13 @@ import React from "react";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator, createDrawerNavigator } from "react-navigation";
 import Home from "../screens/home/home";
 import Login from "../screens/signUp/signUp";
+import Single from "../screens/singleCar/singleCar";
+// import ResetPassword from "./components/resetPassword/resetPassword";
+// import UserGuide from "./components/userGuide/userGuide";
+// import ContactUs from "./components/contactUs/contactUs";
+// import AboutUs from "./components/aboutUs/aboutUs";
+// import Garage from "./components/garage";
+// import Single from "./components/singleCar"
 // import MainScreen from 'app/screens/home/home.js'
 // const homeNavigator = createStackNavigator ({
 //   Home: {
@@ -18,14 +25,19 @@ import Login from "../screens/signUp/signUp";
 //   },
 // });
 const MainNavigator = createStackNavigator({
-  Main: {
-    screen: Home,
-    navigationOptions: { header: null }
-  },
-  Login: {
-    screen: Login,
+  // Main: {
+  //   screen: Home,
+  //   navigationOptions: { header: null }
+  // },
+  // Login: {
+  //   screen: Login,
+  //   navigationOptions: { header: null }
+  // },
+  Single: {
+    screen: Single,
     navigationOptions: { header: null }
   }
+
 });
 
 const AppContainer = createAppContainer(MainNavigator);
