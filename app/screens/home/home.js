@@ -13,6 +13,7 @@ import {
 import { AppLoading } from "expo";
 import { connect } from "react-redux";
 import get from "lodash/get";
+import DropdownAlert from "react-native-dropdownalert";
 import Axios from "@utils/Axios";
 import jwt_decode from "jwt-decode";
 import { Button } from "native-base";
@@ -91,6 +92,11 @@ class Home extends Component {
       this.setState({ authReady: true });
     }
   }
+  _onError = error => {
+    if (error) {
+      this.dropdown.alertWithType("error", "Error", error);
+    }
+  };
   onChange = data => {
     this.setState({ data: data });
   };
@@ -119,6 +125,7 @@ class Home extends Component {
               )}
             </View>
           </View>
+          <DropdownAlert ref={ref => (this.dropdown = ref)} onClose={data => this.onAlertClose(data)} />
         </ImageBackground>
       );
     } else {
@@ -135,6 +142,7 @@ class Home extends Component {
             onFinish={() => this.routeToRightView()}
             onError={console.warn}
           />
+          <DropdownAlert ref={ref => (this.dropdown = ref)} onClose={data => this.onAlertClose(data)} />
           <ActivityIndicator size={"large"} />
         </View>
       );

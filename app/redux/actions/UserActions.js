@@ -19,7 +19,7 @@ export const login = data => async dispatch => {
   } catch (e) {
     dispatch({
       type: "USER_AUTH_ERROR",
-      payload: e.response.data.message
+      payload: e.response
     });
   }
 };
