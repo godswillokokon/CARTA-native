@@ -20,5 +20,5 @@
 //   aboutUs: AboutUs
 // });
 // export default createAppContainer(display);
-import App from './app/index'
-export default App
+import App from './app/index';
+export default App;

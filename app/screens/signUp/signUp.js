@@ -41,6 +41,7 @@ class SignUp extends Component {
     this.state.checked ? this.UnCheckBox() : this.CheckBox();
     // if (this.state.checked) return console.log("checked");
     // if (!this.state.checked) return console.log("unchecked");
+
   }
   _simulateLogin = (email, password) => {
     this.setState({ isLoading: true });
@@ -53,6 +54,8 @@ class SignUp extends Component {
     const device_height = Dimensions.get("window").height;
     // console.log("your phone height is ",device_height);
     // console.log("your phone width is ",device_width);
+
+
 
     return (
       <Container style={styles.container}>
@@ -108,12 +111,13 @@ class SignUp extends Component {
                 rounded
                 style={styles.loginBtn}
                 onPress={() => this._simulateLogin(this.state.email, this.state.password)}
+
               >
                 {this.state.isLoading ? (
                   <ActivityIndicator style={styles.spinner} size="large" color={"white"} />
                 ) : (
-                  <FontAwesome name="sign-in" size={45} color={"white"} />
-                )}
+                    <FontAwesome name="sign-in" size={45} color={"white"} />
+                  )}
               </Button>
             </Form>
             <View>
