@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { View, Image, Dimensions, AppRegistry, TextInput, TouchableOpacity, ImageBackground } from "react-native";
-import { Container, Content, Form, Item, Input, Left, Button, Text, CheckBox, Body, ListItem } from "native-base";
+import { connect } from "react-redux";
+import { View, Image, Dimensions, ActivityIndicator, ImageBackground } from "react-native";
+import { AppLoading } from "expo";
+import { Container, Content, Form, Item, Input, Left, Button, Text, CheckBox, Body, ListItem, Label } from "native-base";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import { login, resetFailureAction, refreshAuthentication, GetUserData, logout } from "../../redux/actions/UserActions";
 import styles from "./sigupStyle";
-import { connect } from "react-redux";
 
-export default class SignUp extends Component {
+class SignUp extends Component {
   static navigationOptions = {
     header: null
   };
@@ -43,10 +44,8 @@ export default class SignUp extends Component {
 
   }
   _simulateLogin = (email, password) => {
-    console.log(this.state.email);
-    console.log(this.state.password);
-    // this.setState({ isLoading: true });
-    // this.props.onLogin({ mobile, password });
+    this.setState({ isLoading: true });
+    this.props.onLogin({ email, password });
   };
 
   render() {
@@ -66,28 +65,38 @@ export default class SignUp extends Component {
           </Text>
           <Content style={{ top: 30 }}>
             <Form>
-              <Item style={[styles.loginMidLine]}>
-                <FontAwesome name="user" size={25} color={"grey"} style={styles.icons} />
+              <Item style={[styles.loginMidLine]} floatingLabel>
+                <Label>
+                  <FontAwesome name="user" size={25} color={"grey"} style={styles.icons} />
+                  Email
+                </Label>
+
                 <Input
                   ref={ref => (this.textInputRef = ref)}
-                  placeholder="Email"
+                  // placeholder="Email"
                   name={"email"}
                   type="email"
                   returnKeyType="next"
-                  onChangeText={(value) => this.setState({ email: value })}
+                  onChangeText={value => this.setState({ email: value })}
+                  isEnabled={!this.state.isLoading}
                 />
               </Item>
 
-              <Item style={[styles.logins]}>
-                <FontAwesome name="lock" size={25} color={"grey"} style={styles.icons} />
+              <Item style={[styles.logins]} floatingLabel>
+                <Label>
+                  <FontAwesome name="lock" size={25} color={"grey"} style={styles.icons} />
+                  Password
+                </Label>
+
                 <Input
                   ref={ref => (this.passwordInputRef = ref)}
                   name={"password"}
                   type="password"
                   secureTextEntry={true}
                   returnKeyType="done"
-                  placeholder="Password"
-                  onChangeText={(value) => this.setState({ password: value })}
+                  // placeholder="Password"
+                  onChangeText={value => this.setState({ password: value })}
+                  isEnabled={!this.state.isLoading}
                 />
               </Item>
               <ListItem style={styles.remBtn}>
@@ -104,11 +113,15 @@ export default class SignUp extends Component {
                 onPress={() => this._simulateLogin(this.state.email, this.state.password)}
 
               >
-                <FontAwesome name="sign-in" size={45} color={"white"} />
+                {this.state.isLoading ? (
+                  <ActivityIndicator style={styles.spinner} size="large" color={"white"} />
+                ) : (
+                    <FontAwesome name="sign-in" size={45} color={"white"} />
+                  )}
               </Button>
             </Form>
             <View>
-              <ListItem icon style={styles.lowerBody} onPress={() => this.props.navigation.navigate("Single")}>
+              <ListItem icon style={styles.lowerBody} onPress={() => this.props.navigation.navigate("Register")}>
                 <Left>
                   <Button disabled style={{ backgroundColor: "#FF9501" }}>
                     <FontAwesome active name="unlock" />
@@ -168,9 +181,8 @@ const mapDispatchToProps = dispatch => ({
   getUser: token => dispatch(GetUserData(token)),
   refreshAuthentication: token => dispatch(refreshAuthentication(token))
 });
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(SignUp);
-AppRegistry.registerComponent("CARTA-SignUp", () => SignUp);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignUp);
+// AppRegistry.registerComponent("CARTA-SignUp", () => SignUp);
