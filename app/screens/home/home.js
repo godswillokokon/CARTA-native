@@ -67,7 +67,7 @@ class Home extends Component {
   };
   async componentDidUpdate(prevProps, prevState) {
     if (get(prevProps.auth, "token") !== get(this.props.auth, "token")) {
-      return this.props.navigation.navigate("Garage");
+      return this.props.navigation.navigate("Single");
     } else if (prevProps.auth.authError !== this.props.auth.authError) {
       this._onError(this.props.auth.authError);
       this.setState({ isLoading: false });

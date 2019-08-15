@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 // import styled from "styled-components";
+import FooterComponet from "../footer";
 import { View, StyleSheet, Platform, Dimensions, ImageBackground, Image, Text, TouchableOpacity } from "react-native";
 import {
   Header,
@@ -108,25 +109,8 @@ export default class Single extends Component {
           </View>
 
         </Content>
-        <Footer style={styles.footer}>
-          <FooterTab style={styles.footer}>
-            <Button badge vertical style={styles.border}>
-
-              <FontAwesome name="align-left" size={15} color={"white"} />
-              <Text style={styles.whiteText}>Overview</Text>
-            </Button>
-            <Button vertical style={styles.border}>
-              <FontAwesome name="address-card" size={15} color={"white"} />
-              <Text style={styles.whiteText}>Profile</Text>
-            </Button>
-            <Button active badge vertical style={[styles.footerActive, styles.border]}>
-              <Badge ><Text style={styles.badge}>10</Text></Badge>
-              <FontAwesome active name="car" size={15} color={"#652d90"} />
-              <Text>Garage</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
-      </Container >
+        <FooterComponet name="garage" />
+      </Container>
     );
   }
 }
@@ -160,6 +144,7 @@ const styles = StyleSheet.create({
 
   },
   footerActive: {
+    paddingTop:100,
     backgroundColor: "white",
   },
   badge: {

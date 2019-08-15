@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import FooterComponet from "../footer";
 // import styled from "styled-components";
 import {
   Text,
@@ -11,7 +12,23 @@ import {
   Image,
   ImageBackground
 } from "react-native";
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Content, Input, Textarea, Form, Item } from "native-base";
+import {
+  Container,
+  Header,
+  Left,
+  Body,
+  CardItem,
+  Card,
+  Right,
+  Button,
+  Icon,
+  Title,
+  Content,
+  Input,
+  Textarea,
+  Form,
+  Item
+} from "native-base";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
 export default class Garage extends Component {
@@ -24,38 +41,51 @@ export default class Garage extends Component {
     let cards = [];
     for (let i = 0; i < 4; i++) {
       cards.push(
-        <View style={styles.card} key={i}>
+        <Card style={styles.card} key={i}>
           <View style={styles.car}>
             <ImageBackground
               source={require("../../../assets/resetPassword.jpg")}
               style={{ height: "100%", width: "100%", borderRadius: 100 }}
             />
           </View>
-          {}
-          <View style={styles.details}>
+          <CardItem style={styles.details}>
             <Text style={styles.carName}>Honda</Text>
             <Text style={styles.carModel}>Model: 2018 Model Plate Number: 34ODU47</Text>
-          </View>
-        </View>
+          </CardItem>
+        </Card>
+        // <View style={styles.card} key={i}>
+        //   <View style={styles.car}>
+        //     <ImageBackground
+        //       source={require("../../../assets/resetPassword.jpg")}
+        //       style={{ height: "100%", width: "100%", borderRadius: 100 }}
+        //     />
+        //   </View>
+        //   {}
+        //   <View style={styles.details}>
+        //     <Text style={styles.carName}>Honda</Text>
+        //     <Text style={styles.carModel}>Model: 2018 Model Plate Number: 34ODU47</Text>
+        //   </View>
+        // </View>
       );
     }
     return (
-      <View style={{ height: device_height, width: device_width }}>
+      <Container style={{ height: device_height, width: device_width }}>
         <Header style={styles.head}>
-          <Left style={{ marginTop: 20 }}>
+          <Left style={{ marginTop: 5 }}>
             <Button transparent onPress={() => this.props.navigation.navigate("signUp")}>
               <Icon name="arrow-back" />
             </Button>
           </Left>
           <Body style={styles.body}>
-            <Text style={styles.title}>Reset Password</Text>
+            <Text style={styles.title}></Text>
           </Body>
-          <Right>
-            <FontAwesome name="home" size={30} color={"white"} />
+          <Right style={{ marginRight: 10 }}>
+            <FontAwesome name="ellipsis-v" size={20} color={"white"} />
           </Right>
-            </Header>
-            {cards}
-      </View>
+        </Header>
+        <Content>{cards}</Content>
+        <FooterComponet name="garage" />
+      </Container>
     );
   }
 }
@@ -91,19 +121,20 @@ const styles = StyleSheet.create({
   },
   car: {
     flex: 2,
-    width: "50%",
-    borderRadius: 40
+    width: "50%"
+    // borderRadius: 40
   },
   details: {
-    flex: 2,
-    margin: 10,
-    marginTop: 20
+    flex: 2
+    // margin: 10,
+    // marginTop: 20
   },
   carName: {
     fontFamily: "Roboto",
     fontStyle: "normal",
     fontWeight: "500",
     fontSize: 25,
+    marginTop: -10,
     color: "#383838"
   },
   carModel: {
@@ -112,6 +143,6 @@ const styles = StyleSheet.create({
     fontWeight: "300",
     fontSize: 15,
     color: "#383838",
-    marginTop: 25
+    marginTop: 50
   }
 });
