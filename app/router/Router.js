@@ -13,6 +13,7 @@ import Profile from "../screens/profile";
 import Dashboard from "../screens/dashboard/dashboard";
 import Garage from "../screens/garage";
 import Register from "../screens/register/register";
+import Report from "../screens/report/report";
 // import MainScreen from 'app/screens/home/home.js'
 // const homeNavigator = createStackNavigator ({
 //   Home: {
@@ -56,6 +57,9 @@ const MainNavigator = createStackNavigator({
   },
   Garage: {
     screen: Garage,
+  },
+  Report: {
+    screen: Report,
     navigationOptions: { header: null }
   }
 });
