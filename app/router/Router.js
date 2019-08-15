@@ -3,15 +3,10 @@ import { createStackNavigator, createAppContainer, createBottomTabNavigator, cre
 import Home from "../screens/home/home";
 import Login from "../screens/signUp/signUp";
 import Single from "../screens/singleCar/singleCar";
-// import ResetPassword from "./components/resetPassword/resetPassword";
-// import UserGuide from "./components/userGuide/userGuide";
-// import ContactUs from "./components/contactUs/contactUs";
-// import AboutUs from "./components/aboutUs/aboutUs";
-// import Garage from "./components/garage";
-// import Single from "./components/singleCar"
 import Garage from "../screens/garage"
 import Register from "../screens/register/register"
 import Dashboard from "../screens/dashboard/dashboard";
+import Report from "../screens/report/report";
 // import MainScreen from 'app/screens/home/home.js'
 // const homeNavigator = createStackNavigator ({
 //   Home: {
@@ -50,6 +45,10 @@ const MainNavigator = createStackNavigator({
   },
   Dashboard: {
     screen: Dashboard,
+    navigationOptions: { header: null }
+  },
+  Report: {
+    screen: Report,
     navigationOptions: { header: null }
   }
 

@@ -20,11 +20,19 @@ import {
   Item,
   Label,
   Input,
-  Textarea
+  DatePicker
 } from "native-base";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
-export default class Single extends Component {
+export default class Report extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { chosenDate: new Date() };
+    this.setDate = this.setDate.bind(this);
+  }
+  setDate(newDate) {
+    this.setState({ chosenDate: newDate });
+  }
   static navigationOptions = {
     header: null
   };
@@ -53,7 +61,7 @@ export default class Single extends Component {
       <Container style={{ height: device_height, width: device_width }}>
         <Header style={styles.head}>
           <Left style={{ marginTop: 5 }}>
-            <Button transparent onPress={() => this.props.navigation.navigate("Garage")}>
+            <Button transparent >
               <Icon name="arrow-back" />
             </Button>
           </Left>
@@ -66,47 +74,67 @@ export default class Single extends Component {
         </Header>
 
         <Content>
-          <Card>
-            <CardItem>
-            </CardItem>
-            <CardItem cardBody>
-              <Image source={{ uri: 'https://res.cloudinary.com/ogcodes/image/upload/v1565462608/tdghephwnr5z5jl0d2ul.jpg' }} style={{ height: 200, width: null, flex: 1 }} />
-            </CardItem>
 
-          </Card>
+          <Text style={{ alignSelf: "center", fontSize: 20, fontWeight: "bold", }}>Fill out this form</Text>
+
           <View style={styles.space}>
             <Form >
               <Item floatingLabel >
-                <Label>Company*</Label>
-                <Input />
+                <Label>Name*</Label>
+                <Input name={"name"} type="text" />
               </Item>
               <Item floatingLabel >
-                <Label>Model*</Label>
-                <Input />
+                <Label>Email Address*</Label>
+                <Input name={"email"} type="email" />
               </Item>
               <Item floatingLabel >
-                <Label>Chassis Number*</Label>
-                <Input />
+                <Label>Engine Chassis Number*</Label>
+                <Input name={"chassis"} type="text" />
               </Item>
               <Item floatingLabel >
                 <Label>Car Color*</Label>
-                <Input />
+                <Input name={"color"} type="text" />
               </Item>
               <Item floatingLabel >
                 <Label>Plate Number*</Label>
-                <Input />
+                <Input name={"plate"} type="text" />
               </Item>
               <Item floatingLabel>
                 <Label>Any dent?</Label>
-                <Input />
+                <Input name={"dent"} type="text" />
+              </Item>
+              <Item>
+                <DatePicker
+                  defaultDate={new Date(2019, 1, 1)}
+                  minimumDate={new Date(2018, 1, 1)}
+                  maximumDate={new Date(2050, 12, 31)}
+                  locale={"en"}
+                  timeZoneOffsetInMinutes={undefined}
+                  modalTransparent={true}
+                  animationType={"fade"}
+                  androidMode={"calendar"}
+                  placeHolderText="Select date of theft"
+                  textStyle={{ color: "black" }}
+                  placeHolderTextStyle={{ color: "black" }}
+                  onDateChange={this.setDate}
+                  disabled={false}
+                />
+                <Text>
+                  Date: {this.state.chosenDate.toString().substr(4, 12)}
+                </Text>
+              </Item>
+              <Item floatingLabel>
+                <Label>Last location seen*</Label>
+                <Input name={"lastLoc"} type="text" />
+              </Item>
+              <Item floatingLabel>
+                <Label>Addition Info </Label>
+                <Input name={"info"} type="text" />
               </Item>
 
             </Form>
-            <TouchableOpacity style={styles.edit} >
-              <Text style={styles.editText}>Edit</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.report} onPress={() => this.props.navigation.navigate("Report")}>
-              <Text style={styles.whiteText}>Report</Text>
+            <TouchableOpacity style={styles.submit}>
+              <Text style={styles.whiteText}>Submit</Text>
             </TouchableOpacity>
           </View>
 
@@ -185,29 +213,14 @@ const styles = StyleSheet.create({
   whiteText: {
     color: "white"
   },
-  editText: {
-    color: "white",
-  },
-  edit: {
-    flex: 1,
+  submit: {
     alignSelf: "center",
     backgroundColor: "#652d90",
-    padding: 20,
-    margin: 10,
-    width: 100,
-    alignItems: "center",
-    borderRadius: 39
-
-  },
-  report: {
-    alignSelf: "center",
-    backgroundColor: "red",
     padding: 20,
     margin: 10,
     width: 200,
     alignItems: "center",
     borderRadius: 39,
-  },
-
+  }
 
 });
