@@ -65,12 +65,8 @@ class SignUp extends Component {
           </Text>
           <Content style={{ top: 30 }}>
             <Form>
-              <Item style={[styles.loginMidLine]} floatingLabel>
-                <Label>
-                  <FontAwesome name="user" size={25} color={"grey"} style={styles.icons} />
-                  Email
-                </Label>
-
+              <Item style={[styles.loginMidLine]} floatingLabel >
+                <Label>Email</Label>
                 <Input
                   ref={ref => (this.textInputRef = ref)}
                   // placeholder="Email"
@@ -82,12 +78,9 @@ class SignUp extends Component {
                 />
               </Item>
 
-              <Item style={[styles.logins]} floatingLabel>
-                <Label>
-                  <FontAwesome name="lock" size={25} color={"grey"} style={styles.icons} />
-                  Password
-                </Label>
+              <Item style={[styles.loginMidLine]} floatingLabel >
 
+                <Label>Password</Label>
                 <Input
                   ref={ref => (this.passwordInputRef = ref)}
                   name={"password"}

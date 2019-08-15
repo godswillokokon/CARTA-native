@@ -110,7 +110,7 @@ export default class Single extends Component {
         </Content>
         <Footer style={styles.footer}>
           <FooterTab style={styles.footer}>
-            <Button badge vertical style={styles.border}>
+            <Button badge vertical style={styles.border} onPress={() => this.props.navigation.navigate("Dashboard")}>
 
               <FontAwesome name="align-left" size={15} color={"white"} />
               <Text style={styles.whiteText}>Overview</Text>
