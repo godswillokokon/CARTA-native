@@ -3,6 +3,7 @@ import { createStackNavigator, createAppContainer, createBottomTabNavigator, cre
 import Home from "../screens/home/home";
 import Login from "../screens/signUp/signUp";
 import Single from "../screens/singleCar/singleCar";
+import Profile from "../screens/profile"
 // import ResetPassword from "./components/resetPassword/resetPassword";
 // import UserGuide from "./components/userGuide/userGuide";
 // import ContactUs from "./components/contactUs/contactUs";
@@ -27,24 +28,28 @@ import Register from "../screens/register/register";
 //   },
 // });
 const MainNavigator = createStackNavigator({
-  Main: {
-    screen: Home,
-    navigationOptions: { header: null }
-  },
-  Login: {
-    screen: Login,
-    navigationOptions: { header: null }
-  },
-  Single: {
-    screen: Single,
-    navigationOptions: { header: null }
-  },
-  Register: {
-    screen: Register,
-    navigationOptions: { header: null }
-  },
-  Garage: {
-    screen: Garage,
+  // Main: {
+  //   screen: Home,
+  //   navigationOptions: { header: null }
+  // },
+  // Login: {
+  //   screen: Login,
+  //   navigationOptions: { header: null }
+  // },
+  // Single: {
+  //   screen: Single,
+  //   navigationOptions: { header: null }
+  // },
+  // Register: {
+  //   screen: Register,
+  //   navigationOptions: { header: null }
+  // },
+  // Garage: {
+  //   screen: Garage,
+  //   navigationOptions: { header: null }
+  // },
+  Profile: {
+    screen: Profile,
     navigationOptions: { header: null }
   }
 });
