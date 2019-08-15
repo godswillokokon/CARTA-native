@@ -29,22 +29,22 @@ import Register from "../screens/register/register";
 //   },
 // });
 const MainNavigator = createStackNavigator({
-  // Main: {
-  //   screen: Home,
-  //   navigationOptions: { header: null }
-  // },
-  // Login: {
-  //   screen: Login,
-  //   navigationOptions: { header: null }
-  // },
-  // Single: {
-  //   screen: Single,
-  //   navigationOptions: { header: null }
-  // },
-  // Register: {
-  //   screen: Register,
-  //   navigationOptions: { header: null }
-  // },
+  Main: {
+    screen: Home,
+    navigationOptions: { header: null }
+  },
+  Login: {
+    screen: Login,
+    navigationOptions: { header: null }
+  },
+  Single: {
+    screen: Single,
+    navigationOptions: { header: null }
+  },
+  Register: {
+    screen: Register,
+    navigationOptions: { header: null }
+  },
 
   Profile: {
     screen: Profile,
