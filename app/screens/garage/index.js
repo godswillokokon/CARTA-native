@@ -84,7 +84,7 @@ export default class Garage extends Component {
           </Right>
         </Header>
         <Content>{cards}</Content>
-        <FooterComponet name="garage" />
+        <FooterComponet name="garage" props={this.props} />
       </Container>
     );
   }
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
       android: { paddingTop: 60 },
       ios: { paddingTop: 25 }
     }),
-    backgroundColor: "#7151e4",
+    backgroundColor: "#652d90",
     paddingBottom: 40
   },
   body: {

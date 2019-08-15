@@ -61,13 +61,13 @@ class Home extends Component {
     //user info, auth state..etc
     const getToken = await Session.getData("token");
     if (getToken) {
-      await this.props.getUser(getToken);
+       this.props.getUser(getToken);
     }
     return getToken;
   };
   async componentDidUpdate(prevProps, prevState) {
     if (get(prevProps.auth, "token") !== get(this.props.auth, "token")) {
-      return this.props.navigation.navigate("Single");
+      return this.props.navigation.navigate("Dashboard");
     } else if (prevProps.auth.authError !== this.props.auth.authError) {
       this._onError(this.props.auth.authError);
       this.setState({ isLoading: false });

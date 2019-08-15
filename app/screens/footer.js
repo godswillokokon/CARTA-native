@@ -2,21 +2,23 @@ import React, { Component } from "react";
 import { Text, StyleSheet, View } from "react-native";
 import { Button, Footer, FooterTab, Badge } from "native-base";
 import { FontAwesome } from "@expo/vector-icons";
+// import console = require("console");
 export default class FooterComponet extends Component {
   render() {
-    const { name, ...otherProps } = this.props;
+    const { name, props } = this.props;
+    console.log(props);
     switch (name) {
       case "garage": {
         return (
           <Footer style={styles.footer}>
             <FooterTab style={styles.footer}>
-              <Button badge vertical style={styles.border}>
+              <Button badge vertical style={styles.border} onPress={() => props.navigation.navigate("Dashboard")}>
                 <View style={styles.row}>
                   <FontAwesome name="align-left" size={15} color={"white"} />
                   <Text style={styles.whiteText}>Overview</Text>
                 </View>
               </Button>
-              <Button vertical style={styles.border}>
+              <Button vertical style={styles.border} onPress={() => props.navigation.navigate("Profile")}>
                 <View style={styles.row}>
                   <FontAwesome name="address-card" size={15} color={"white"} />
                   <Text style={styles.whiteText}>Profile</Text>
@@ -42,17 +44,17 @@ export default class FooterComponet extends Component {
             <FooterTab style={styles.footer}>
               <Button active badge vertical style={[styles.footerActive, styles.border]}>
                 <View style={styles.row}>
-                  <FontAwesome name="align-left" size={15} color={"#652d90"}/>
+                  <FontAwesome name="align-left" size={15} color={"#652d90"} />
                   <Text style={styles.active}>Overview</Text>
                 </View>
               </Button>
-              <Button vertical style={styles.border}>
+              <Button vertical style={styles.border} onPress={() => props.navigation.navigate("Profile")}>
                 <View style={styles.row}>
                   <FontAwesome name="address-card" size={15} color={"white"} />
                   <Text style={styles.whiteText}>Profile</Text>
                 </View>
               </Button>
-              <Button badge vertical style={styles.border}>
+              <Button badge vertical style={styles.border} onPress={() => props.navigation.navigate("Garage")}>
                 <View style={styles.row}>
                   {/* <Badge>
                     <Text style={styles.badge}>10</Text>
@@ -72,7 +74,7 @@ export default class FooterComponet extends Component {
         return (
           <Footer style={styles.footer}>
             <FooterTab style={styles.footer}>
-              <Button badge vertical style={styles.border}>
+              <Button badge vertical style={styles.border} onPress={() => props.navigation.navigate("Dashboard")}>
                 <FontAwesome name="align-left" size={15} color={"white"} />
                 <Text style={styles.whiteText}>Overview</Text>
               </Button>
@@ -85,7 +87,7 @@ export default class FooterComponet extends Component {
                   </Badge> */}
                 </View>
               </Button>
-              <Button badge vertical style={styles.border}>
+              <Button badge vertical style={styles.border} onPress={() => props.navigation.navigate("Garage")}>
                 {/* <Badge>
                   <Text style={styles.badge}>10</Text>
                 </Badge> */}
@@ -112,11 +114,10 @@ const styles = StyleSheet.create({
   },
   footerActive: {
     backgroundColor: "white",
-    height: 100,
-    
+    height: 100
   },
   active: {
-    color: "#652d90" 
+    color: "#652d90"
   },
   badge: {
     borderRadius: 300,
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
   },
   row: {
     alignContent: "center",
-    alignItems: 'center',
+    alignItems: "center"
     // flexDirection: "row"
   }
 });

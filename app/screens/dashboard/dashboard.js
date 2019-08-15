@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-// import styled from "styled-components";
 import FooterComponet from "../footer";
+// import styled from "styled-components";
 import { View, StyleSheet, Platform, Dimensions, ImageBackground, Image, Text, TouchableOpacity } from "react-native";
 import {
   Header,
@@ -25,7 +25,7 @@ import {
 } from "native-base";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
-export default class Single extends Component {
+export default class Dashboard extends Component {
   static navigationOptions = {
     header: null
   };
@@ -67,49 +67,10 @@ export default class Single extends Component {
         </Header>
 
         <Content>
-          <Card>
-            <CardItem>
-            </CardItem>
-            <CardItem cardBody>
-              <Image source={{ uri: 'https://res.cloudinary.com/ogcodes/image/upload/v1565462608/tdghephwnr5z5jl0d2ul.jpg' }} style={{ height: 200, width: null, flex: 1 }} />
-            </CardItem>
 
-          </Card>
-          <View style={styles.space}>
-            <Form >
-              <Item floatingLabel >
-                <Label>Company*</Label>
-                <Input />
-              </Item>
-              <Item floatingLabel >
-                <Label>Model*</Label>
-                <Input />
-              </Item>
-              <Item floatingLabel >
-                <Label>Chassis Number*</Label>
-                <Input />
-              </Item>
-              <Item floatingLabel >
-                <Label>Car Color*</Label>
-                <Input />
-              </Item>
-              <Item floatingLabel >
-                <Label>Plate Number*</Label>
-                <Input />
-              </Item>
-              <Item floatingLabel>
-                <Label>Any dent?</Label>
-                <Input />
-              </Item>
-
-            </Form>
-            <TouchableOpacity style={styles.edit}>
-              <Text style={styles.whiteText}>Edit</Text>
-            </TouchableOpacity>
-          </View>
 
         </Content>
-        <FooterComponet name="garage" props={this.props}/>
+        <FooterComponet name="overview" props={this.props}/>
       </Container>
     );
   }
@@ -144,7 +105,6 @@ const styles = StyleSheet.create({
 
   },
   footerActive: {
-    paddingTop:100,
     backgroundColor: "white",
   },
   badge: {

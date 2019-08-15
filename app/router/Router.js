@@ -3,13 +3,14 @@ import { createStackNavigator, createAppContainer, createBottomTabNavigator, cre
 import Home from "../screens/home/home";
 import Login from "../screens/signUp/signUp";
 import Single from "../screens/singleCar/singleCar";
-import Profile from "../screens/profile"
+import Profile from "../screens/profile";
 // import ResetPassword from "./components/resetPassword/resetPassword";
 // import UserGuide from "./components/userGuide/userGuide";
 // import ContactUs from "./components/contactUs/contactUs";
 // import AboutUs from "./components/aboutUs/aboutUs";
 // import Garage from "./components/garage";
 // import Single from "./components/singleCar"
+import Dashboard from "../screens/dashboard/dashboard";
 import Garage from "../screens/garage";
 import Register from "../screens/register/register";
 // import MainScreen from 'app/screens/home/home.js'
@@ -44,12 +45,17 @@ const MainNavigator = createStackNavigator({
   //   screen: Register,
   //   navigationOptions: { header: null }
   // },
-  // Garage: {
-  //   screen: Garage,
-  //   navigationOptions: { header: null }
-  // },
+
   Profile: {
     screen: Profile,
+    navigationOptions: { header: null }
+  },
+  Dashboard: {
+    screen: Dashboard,
+    navigationOptions: { header: null }
+  },
+  Garage: {
+    screen: Garage,
     navigationOptions: { header: null }
   }
 });
