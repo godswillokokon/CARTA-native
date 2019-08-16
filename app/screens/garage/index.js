@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import FooterComponet from "../footer";
 // import styled from "styled-components";
 import {
   Text,
@@ -12,25 +13,21 @@ import {
   ImageBackground
 } from "react-native";
 import {
+  Container,
   Header,
   Left,
   Body,
+  CardItem,
+  Card,
   Right,
   Button,
   Icon,
-  Container,
+  Title,
   Content,
-  CardItem,
-  Thumbnail,
-  Card,
-  Footer,
-  FooterTab,
-  Badge,
-  Form,
-  Item,
-  Label,
   Input,
-  Textarea
+  Textarea,
+  Form,
+  Item
 } from "native-base";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
@@ -78,31 +75,13 @@ export default class Garage extends Component {
             <FontAwesome name="ellipsis-v" size={20} color={"white"} />
           </Right>
         </Header>
-        <Content>
-          {cards}
-        </Content>
-        <Footer style={styles.footer}>
-          <FooterTab style={styles.footer}>
-            <Button badge vertical style={styles.border} onPress={() => this.props.navigation.navigate("Dashboard")}>
-
-              <FontAwesome name="align-left" size={15} color={"white"} />
-              <Text style={styles.whiteText}>Overview</Text>
-            </Button>
-            <Button vertical style={styles.border}>
-              <FontAwesome name="address-card" size={15} color={"white"} />
-              <Text style={styles.whiteText}>Profile</Text>
-            </Button>
-            <Button active badge vertical style={[styles.footerActive, styles.border]}>
-              <Badge ><Text style={styles.badge}>10</Text></Badge>
-              <FontAwesome active name="car" size={15} color={"#652d90"} />
-              <Text>Garage</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
+        <Content>{cards}</Content>
+        <FooterComponet name="garage" props={this.props} />
       </Container>
     );
   }
 }
+          
 const styles = StyleSheet.create({
   card: {
     // width: "98%",
@@ -137,8 +116,8 @@ const styles = StyleSheet.create({
   },
   car: {
     flex: 2,
-    width: "50%",
-    borderRadius: 40
+    width: "50%"
+    // borderRadius: 40
   },
   details: {
     flex: 3,
@@ -151,6 +130,7 @@ const styles = StyleSheet.create({
     fontStyle: "normal",
     fontWeight: "500",
     fontSize: 25,
+    marginTop: -10,
     color: "#383838"
   },
   carModel: {

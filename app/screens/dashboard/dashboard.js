@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import FooterComponet from "../footer";
 // import styled from "styled-components";
 import { View, StyleSheet, Platform, Dimensions, ImageBackground, Image, Text, TouchableOpacity } from "react-native";
 import {
@@ -69,28 +70,8 @@ export default class Dashboard extends Component {
 
 
         </Content>
-        <Footer style={styles.footer}>
-          <FooterTab style={styles.footer}>
-
-            <Button active badge vertical style={[styles.footerActive, styles.border]}>
-              <Badge ><Text ></Text></Badge>
-              <FontAwesome active name="align-left" size={15} color={"#652d90"} />
-              <Text>Overview</Text>
-            </Button>
-            <Button vertical style={styles.border}>
-
-              <FontAwesome name="address-card" size={15} color={"white"} />
-
-              <Text style={styles.whiteText}>Profile</Text>
-            </Button>
-            <Button badge vertical style={[styles.border]} onPress={() => this.props.navigation.navigate("Garage")}>
-              <Badge ><Text style={styles.badge}>10</Text></Badge>
-              <FontAwesome active name="car" size={15} color={"white"} />
-              <Text style={styles.whiteText}>Garage</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
-      </Container >
+        <FooterComponet name="overview" props={this.props}/>
+      </Container>
     );
   }
 }
