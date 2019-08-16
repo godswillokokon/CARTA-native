@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import styled from "styled-components";
-import { View, StyleSheet, Platform, Dimensions, ImageBackground, Image, Text, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Platform, Dimensions, ImageBackground, Image, Text, TouchableOpacity, Switch } from "react-native";
 import {
   Header,
   Left,
@@ -136,6 +136,12 @@ export default class Report extends Component {
             <TouchableOpacity style={styles.submit}>
               <Text style={styles.whiteText}>Submit</Text>
             </TouchableOpacity>
+            <View styles={styles.toggle}>
+              <Switch
+
+              />
+
+            </View>
           </View>
 
         </Content>
@@ -221,6 +227,11 @@ const styles = StyleSheet.create({
     width: 200,
     alignItems: "center",
     borderRadius: 39,
+  },
+  toggle: {
+    flex: 1,
+    alignItems: 'center',
+    marginTop: 5
   }
 
 });
