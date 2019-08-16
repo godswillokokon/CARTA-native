@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 // import styled from "styled-components";
+import FooterComponet from "../footer";
 import { View, StyleSheet, Platform, Dimensions, ImageBackground, Image, Text, TouchableOpacity, Switch } from "react-native";
 import {
   Header,
