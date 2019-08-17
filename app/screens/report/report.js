@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import styled from "styled-components";
-import { View, StyleSheet, Platform, Dimensions, ImageBackground, Image, Text, TouchableOpacity } from "react-native";
+import FooterComponet from "../footer";
+import { View, StyleSheet, Platform, Dimensions, ImageBackground, Image, Text, TouchableOpacity, Switch } from "react-native";
 import {
   Header,
   Left,
@@ -136,27 +137,16 @@ export default class Report extends Component {
             <TouchableOpacity style={styles.submit}>
               <Text style={styles.whiteText}>Submit</Text>
             </TouchableOpacity>
+            <View styles={styles.toggle}>
+              <Switch
+
+              />
+
+            </View>
           </View>
 
         </Content>
-        <Footer style={styles.footer}>
-          <FooterTab style={styles.footer}>
-            <Button badge vertical style={styles.border} onPress={() => this.props.navigation.navigate("Dashboard")}>
-
-              <FontAwesome name="align-left" size={15} color={"white"} />
-              <Text style={styles.whiteText}>Overview</Text>
-            </Button>
-            <Button vertical style={styles.border}>
-              <FontAwesome name="address-card" size={15} color={"white"} />
-              <Text style={styles.whiteText}>Profile</Text>
-            </Button>
-            <Button active badge vertical style={[styles.footerActive, styles.border]} onPress={() => this.props.navigation.navigate("Garage")}>
-              <Badge ><Text style={styles.badge}>10</Text></Badge>
-              <FontAwesome active name="car" size={15} color={"#652d90"} />
-              <Text>Garage</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
+        <FooterComponet name="garage" props={this.props} />
       </Container >
     );
   }
@@ -221,6 +211,11 @@ const styles = StyleSheet.create({
     width: 200,
     alignItems: "center",
     borderRadius: 39,
+  },
+  toggle: {
+    flex: 1,
+    alignItems: 'center',
+    marginTop: 5
   }
 
 });

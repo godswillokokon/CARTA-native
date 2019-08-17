@@ -39,7 +39,7 @@ export default class Garage extends Component {
     const device_width = Dimensions.get("window").width;
     const device_height = Dimensions.get("window").height;
     let cards = [];
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 2; i++) {
       cards.push(
         <View style={styles.card} key={i}>
           <View style={styles.car}>
