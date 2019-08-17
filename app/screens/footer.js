@@ -6,7 +6,6 @@ import { FontAwesome } from "@expo/vector-icons";
 export default class FooterComponet extends Component {
   render() {
     const { name, props } = this.props;
-    console.log(props);
     switch (name) {
       case "garage": {
         return (

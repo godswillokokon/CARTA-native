@@ -82,13 +82,13 @@ export const refreshAuthentication = token => async dispatch => {
 
 export const GetUserData = token => async dispatch => {
   try {
-    const response = await Axios.get("/users/profile", await SupportHeader());
+    const response = await Axios.get("/profile", await SupportHeader());
     // Session.saveUser(response.data);
     dispatch({
       type: "USER_DATA",
-      payload: { ...response.data }
+      payload: { ...response.data.success }
     });
-    return response.data;
+    return response.data.success;
   } catch (e) {
     // toast.error("Error Notification !");
     Session.logout();

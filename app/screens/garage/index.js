@@ -41,21 +41,21 @@ export default class Garage extends Component {
     let cards = [];
     for (let i = 0; i < 2; i++) {
       cards.push(
-        <View style={styles.card} key={i} >
-          <View style={styles.car} >
+        <View style={styles.card} key={i}>
+          <View style={styles.car}>
             <ImageBackground
               source={require("../../../assets/resetPassword.jpg")}
               style={{ height: "100%", width: "100%", borderRadius: 100 }}
             />
           </View>
           {}
-          <View style={styles.details} >
+          <View style={styles.details}>
             <Text style={styles.carName}>Honda 2018 X</Text>
             <Text style={styles.carModel}>Plate Number: AJQ124 CAL</Text>
 
-            <TouchableOpacity style={styles.viewCar} onPress={() => this.props.navigation.navigate("Single")}><Text>View</Text></TouchableOpacity>
-
-
+            <TouchableOpacity style={styles.viewCar} onPress={() => this.props.navigation.navigate("Single")}>
+              <Text>View</Text>
+            </TouchableOpacity>
           </View>
         </View>
       );
@@ -63,8 +63,9 @@ export default class Garage extends Component {
     return (
       <Container style={{ height: device_height, width: device_width }}>
         <Header style={styles.head}>
+          {console.log(this.props)}
           <Left style={{ marginTop: 5 }}>
-            <Button transparent >
+            <Button transparent>
               <Icon name="arrow-back" />
             </Button>
           </Left>
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
   },
   details: {
     flex: 3,
-    margin: 10,
+    margin: 10
     // marginTop: 10,
     // marginBottom: 20,
   },
@@ -142,11 +143,10 @@ const styles = StyleSheet.create({
     marginTop: 25
   },
   footer: {
-    backgroundColor: "#652d90",
-
+    backgroundColor: "#652d90"
   },
   footerActive: {
-    backgroundColor: "white",
+    backgroundColor: "white"
   },
   badge: {
     borderRadius: 300,
@@ -160,7 +160,6 @@ const styles = StyleSheet.create({
     borderRightColor: "#7438a2",
     borderBottomColor: "#652d90",
     borderTopColor: "#652d90"
-
   },
   whiteText: {
     color: "white"
@@ -168,7 +167,7 @@ const styles = StyleSheet.create({
   viewCar: {
     margin: 0,
     paddingTop: 30,
-    left: 150,
+    left: 150
     // top: -30,
   }
 });

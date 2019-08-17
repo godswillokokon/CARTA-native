@@ -1,9 +1,9 @@
 import * as types from '../types'
 
 const initialState = {
-  selectedGC: false,
-  showSpinner: false,
-  displayAlert: false
+  // selectedGC: false,
+  // showSpinner: false,
+  // displayAlert: false
 }
 
 export default (state = initialState, { type, payload }) => {
