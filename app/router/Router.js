@@ -2,16 +2,15 @@ import React from "react";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator, createDrawerNavigator } from "react-navigation";
 import Home from "../screens/home/home";
 import Login from "../screens/signUp/signUp";
-import Single from "../screens/singleCar/singleCar";
+import Garage from "../screens/garage";
 import Profile from "../screens/profile";
+import Single from "../screens/singleCar/singleCar";
+
 // import ResetPassword from "./components/resetPassword/resetPassword";
 // import UserGuide from "./components/userGuide/userGuide";
 // import ContactUs from "./components/contactUs/contactUs";
 // import AboutUs from "./components/aboutUs/aboutUs";
-// import Garage from "./components/garage";
-// import Single from "./components/singleCar"
 import Dashboard from "../screens/dashboard/dashboard";
-import Garage from "../screens/garage";
 import Register from "../screens/register/register";
 import Report from "../screens/report/report";
 // import MainScreen from 'app/screens/home/home.js'
@@ -38,6 +37,17 @@ const MainNavigator = createStackNavigator({
     screen: Login,
     navigationOptions: { header: null }
   },
+  Profile: {
+    screen: Profile,
+    navigationOptions: { header: null }
+  },
+  Garage: {
+    screen: Garage,
+  },
+  Dashboard: {
+    screen: Dashboard,
+    navigationOptions: { header: null }
+  },
   Single: {
     screen: Single,
     navigationOptions: { header: null }
@@ -47,17 +57,6 @@ const MainNavigator = createStackNavigator({
     navigationOptions: { header: null }
   },
 
-  Profile: {
-    screen: Profile,
-    navigationOptions: { header: null }
-  },
-  Dashboard: {
-    screen: Dashboard,
-    navigationOptions: { header: null }
-  },
-  Garage: {
-    screen: Garage,
-  },
   Report: {
     screen: Report,
     navigationOptions: { header: null }

@@ -24,6 +24,7 @@ import {
   DatePicker
 } from "native-base";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import ToggleSwitch from 'toggle-switch-react-native';
 
 export default class Report extends Component {
   constructor(props) {
@@ -33,6 +34,22 @@ export default class Report extends Component {
   }
   setDate(newDate) {
     this.setState({ chosenDate: newDate });
+  }
+  UnTouch() {
+    this.setState({
+      isOn: false
+    });
+  }
+  Touch() {
+    this.setState({
+      isOn: true
+    });
+  }
+  Clicked() {
+    this.state.isOn ? this.UnTouch() : this.Touch();
+    // if (this.state.checked) return console.log("checked");
+    // if (!this.state.checked) return console.log("unchecked");
+
   }
   static navigationOptions = {
     header: null
@@ -138,7 +155,15 @@ export default class Report extends Component {
               <Text style={styles.whiteText}>Submit</Text>
             </TouchableOpacity>
             <View styles={styles.toggle}>
-              <Switch
+              <ToggleSwitch
+                isOn={this.state.isOn}
+                onColor="green"
+                offColor="red"
+                label="Example label"
+                labelStyle={{ color: "black", fontWeight: "900" }}
+                size="large"
+
+                onToggle={this.Clicked.bind(this)}
 
               />
 

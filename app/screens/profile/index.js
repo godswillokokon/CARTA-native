@@ -24,10 +24,10 @@ import FooterComponet from "../footer";
 
 
 class Profile extends Component {
-  async componentDidMount() { 
+  async componentDidMount() {
     this.loadAsync().then(data => {
       console.log(data)
-     })
+    })
   }
   loadAsync = async () => {
     //load all required info
@@ -37,12 +37,12 @@ class Profile extends Component {
       const data = this.props.getUser(getToken);
       return data;
     }
-    
+
   };
   render() {
     const device_width = Dimensions.get("window").width;
     const device_height = Dimensions.get("window").height;
-    
+
     return (
       <Container>
         <Header style={styles.head}>
