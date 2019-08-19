@@ -31,6 +31,11 @@ export default class Report extends Component {
     super(props);
     this.state = { chosenDate: new Date() };
     this.setDate = this.setDate.bind(this);
+    this.state.label = "KILL CAR";
+    this.state.content = true;
+  }
+  componentHideAndShow = () => {
+    this.setState(previousState => ({ content: !previousState.content }))
   }
   setDate(newDate) {
     this.setState({ chosenDate: newDate });
@@ -76,6 +81,7 @@ export default class Report extends Component {
     //     );
     // }
     return (
+
       <Container style={{ height: device_height, width: device_width }}>
         <Header style={styles.head}>
           <Left style={{ marginTop: 5 }}>
@@ -91,84 +97,107 @@ export default class Report extends Component {
           </Right>
         </Header>
 
-        <Content>
+        <Content >
+          {
 
-          <Text style={{ alignSelf: "center", fontSize: 20, fontWeight: "bold", }}>Fill out this form</Text>
+            this.state.content ? <Text style={{ alignSelf: "center", fontSize: 20, fontWeight: "bold", }}>Fill out this form</Text> : null
+          }
 
-          <View style={styles.space}>
-            <Form >
-              <Item floatingLabel >
-                <Label>Name*</Label>
-                <Input name={"name"} type="text" />
-              </Item>
-              <Item floatingLabel >
-                <Label>Email Address*</Label>
-                <Input name={"email"} type="email" />
-              </Item>
-              <Item floatingLabel >
-                <Label>Engine Chassis Number*</Label>
-                <Input name={"chassis"} type="text" />
-              </Item>
-              <Item floatingLabel >
-                <Label>Car Color*</Label>
-                <Input name={"color"} type="text" />
-              </Item>
-              <Item floatingLabel >
-                <Label>Plate Number*</Label>
-                <Input name={"plate"} type="text" />
-              </Item>
-              <Item floatingLabel>
-                <Label>Any dent?</Label>
-                <Input name={"dent"} type="text" />
-              </Item>
-              <Item>
-                <DatePicker
-                  defaultDate={new Date(2019, 1, 1)}
-                  minimumDate={new Date(2018, 1, 1)}
-                  maximumDate={new Date(2050, 12, 31)}
-                  locale={"en"}
-                  timeZoneOffsetInMinutes={undefined}
-                  modalTransparent={true}
-                  animationType={"fade"}
-                  androidMode={"calendar"}
-                  placeHolderText="Select date of theft"
-                  textStyle={{ color: "black" }}
-                  placeHolderTextStyle={{ color: "black" }}
-                  onDateChange={this.setDate}
-                  disabled={false}
-                />
-                <Text>
-                  Date: {this.state.chosenDate.toString().substr(4, 12)}
-                </Text>
-              </Item>
-              <Item floatingLabel>
-                <Label>Last location seen*</Label>
-                <Input name={"lastLoc"} type="text" />
-              </Item>
-              <Item floatingLabel>
-                <Label>Addition Info </Label>
-                <Input name={"info"} type="text" />
-              </Item>
+          {
 
-            </Form>
-            <TouchableOpacity style={styles.submit}>
-              <Text style={styles.whiteText}>Submit</Text>
-            </TouchableOpacity>
-            <View styles={styles.toggle}>
-              <ToggleSwitch
-                isOn={this.state.isOn}
-                onColor="green"
-                offColor="red"
-                label="Example label"
-                labelStyle={{ color: "black", fontWeight: "900" }}
-                size="large"
+            this.state.content ? <View style={styles.space}>
+              <Form >
+                <Item floatingLabel >
+                  <Label>Name*</Label>
+                  <Input name={"name"} type="text" />
+                </Item>
+                <Item floatingLabel >
+                  <Label>Email Address*</Label>
+                  <Input name={"email"} type="email" />
+                </Item>
+                <Item floatingLabel >
+                  <Label>Engine Chassis Number*</Label>
+                  <Input name={"chassis"} type="text" />
+                </Item>
+                <Item floatingLabel >
+                  <Label>Car Color*</Label>
+                  <Input name={"color"} type="text" />
+                </Item>
+                <Item floatingLabel >
+                  <Label>Plate Number*</Label>
+                  <Input name={"plate"} type="text" />
+                </Item>
+                <Item floatingLabel>
+                  <Label>Any dent?</Label>
+                  <Input name={"dent"} type="text" />
+                </Item>
+                <Item>
+                  <DatePicker
+                    defaultDate={new Date(2019, 1, 1)}
+                    minimumDate={new Date(2018, 1, 1)}
+                    maximumDate={new Date(2050, 12, 31)}
+                    locale={"en"}
+                    timeZoneOffsetInMinutes={undefined}
+                    modalTransparent={true}
+                    animationType={"fade"}
+                    androidMode={"calendar"}
+                    placeHolderText="Select date of theft"
+                    textStyle={{ color: "black" }}
+                    placeHolderTextStyle={{ color: "black" }}
+                    onDateChange={this.setDate}
+                    disabled={false}
+                  />
+                  <Text>
+                    Date: {this.state.chosenDate.toString().substr(4, 12)}
+                  </Text>
+                </Item>
+                <Item floatingLabel>
+                  <Label>Last location seen*</Label>
+                  <Input name={"lastLoc"} type="text" />
+                </Item>
+                <Item floatingLabel>
+                  <Label>Addition Info </Label>
+                  <Input name={"info"} type="text" />
+                </Item>
 
-                onToggle={this.Clicked.bind(this)}
+              </Form>
+              <TouchableOpacity style={styles.submit} onPress={this.componentHideAndShow} >
+                <Text style={styles.whiteText}>Submit</Text>
+              </TouchableOpacity>
 
-              />
+            </View> : <View >
+                <View style={{
+                  flex: 1, margin: 20, alignItems: "center", alignSelf: "center", backgroundColor: "#DCDCDC", padding: 20,
+                }}>
+                  <FontAwesome name="ban" size={65} color={"#652d90"} />
+                  <ToggleSwitch
+                    isOn={this.state.isOn}
+                    onColor="green"
+                    offColor="red"
+                    label={this.state.label}
+                    labelStyle={{ color: "#652d90", fontWeight: "900" }}
+                    size="large"
+                    onToggle={this.Clicked.bind(this)}
 
-            </View>
-          </View>
+                  />
+                </View>
+                <View style={{
+                  flex: 1, margin: 20, alignItems: "center", alignSelf: "center", backgroundColor: "#DCDCDC", padding: 20,
+                }}>
+                  <TouchableOpacity style={styles.submit}>
+                    <FontAwesome name="map-marker" size={35} color={"white"} />
+                    <Text style={styles.whiteText}>TRACK CAR</Text>
+                  </TouchableOpacity>
+
+
+                </View>
+
+              </View>
+          }
+
+
+
+
 
         </Content>
         <FooterComponet name="garage" props={this.props} />
@@ -239,8 +268,13 @@ const styles = StyleSheet.create({
   },
   toggle: {
     flex: 1,
-    alignItems: 'center',
-    marginTop: 5
+    fontSize: 20,
+    textAlign: "center",
+    margin: 10,
+    alignItems: "center",
+    alignSelf: "center",
+    backgroundColor: "#652d90",
+    padding: 20,
   }
 
 });
