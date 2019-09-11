@@ -31,17 +31,22 @@ export default class Single extends Component {
   static navigationOptions = {
     header: null
   };
-  state = {
-    // image: 'https://res.cloudinary.com/ogcodes/image/upload/v1565462608/tdghephwnr5z5jl0d2ul.jpg',
-    image: null,
+  constructor(props) {
+    super(props);
+    this.state = {
+      // image: 'https://res.cloudinary.com/ogcodes/image/upload/v1565462608/tdghephwnr5z5jl0d2ul.jpg',
+      image: null,
+    };
+  }
 
-  };
   _pickImage = async () => {
+    console.log('got here');
     let result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
-      aspect: [4, 3],
-    });
+      // aspect: [4, 3],
 
+    });
+    console.log('got here');
     if (result.cancelled) {
       console.log('got here');
       return;
@@ -55,7 +60,7 @@ export default class Single extends Component {
           displaySize: { width: 200, height: 200 },
           resizeMode: 'contain',
         },
-        (uri) => resolve(uri),
+        uri => resolve(uri),
         () => reject(),
       );
     });
@@ -72,24 +77,6 @@ export default class Single extends Component {
     const device_width = Dimensions.get("window").width;
     const device_height = Dimensions.get("window").height;
     let { image } = this.state;
-    let cards = [];
-    // for (let i = 0; i < 4; i++) {
-    //     cards.push(
-    //         <View style={styles.card} key={i}>
-    //             <View style={styles.car}>
-    //                 <ImageBackground
-    //                     source={require("../../assets/resetPassword.jpg")}
-    //                     style={{ height: "100%", width: "100%", borderRadius: 100 }}
-    //                 />
-    //             </View>
-    //             {}
-    //             <View style={styles.details}>
-    //                 <Text style={styles.carName}>Honda</Text>
-    //                 <Text style={styles.carModel}>Model: 2018 Model Plate Number: 34ODU47</Text>
-    //             </View>
-    //         </View>
-    //     );
-    // }
     return (
       <Container style={{ height: device_height, width: device_width }}>
         <Header style={styles.head}>
@@ -111,11 +98,9 @@ export default class Single extends Component {
             <CardItem>
             </CardItem>
             <CardItem cardBody>
-              <Button onPress={() => this._pickImage}>Pick an image from camera roll</Button>
+              <TouchableOpacity style={styles.edit} onPress={() => this._pickImage}><Text style={styles.editText}>Pick an image from camera roll</Text></TouchableOpacity>
 
-
-              />
-              {
+              {image &&
                 <Image source={{ uri: image }} style={{ width: 200, height: 200, resizeMode: 'contain' }} />}
             </CardItem>
 
@@ -148,9 +133,7 @@ export default class Single extends Component {
               </Item>
 
             </Form>
-            <TouchableOpacity style={styles.edit} >
-              <Text style={styles.editText}>Edit</Text>
-            </TouchableOpacity>
+
             <TouchableOpacity style={styles.report} onPress={() => this.props.navigation.navigate("Report")}>
               <Text style={styles.whiteText}>Report</Text>
             </TouchableOpacity>

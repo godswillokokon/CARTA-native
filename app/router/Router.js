@@ -30,26 +30,26 @@ import Maps from "../screens/map/map";
 //   },
 // });
 const MainNavigator = createStackNavigator({
-  Main: {
-    screen: Home,
-    navigationOptions: { header: null }
-  },
-  Login: {
-    screen: Login,
-    navigationOptions: { header: null }
-  },
-  Profile: {
-    screen: Profile,
-    navigationOptions: { header: null }
-  },
-  Garage: {
-    screen: Garage,
-    navigationOptions: { header: null }
-  },
-  Dashboard: {
-    screen: Dashboard,
-    navigationOptions: { header: null }
-  },
+  // Main: {
+  //   screen: Home,
+  //   navigationOptions: { header: null }
+  // },
+  // Login: {
+  //   screen: Login,
+  //   navigationOptions: { header: null }
+  // },
+  // Profile: {
+  //   screen: Profile,
+  //   navigationOptions: { header: null }
+  // },
+  // Garage: {
+  //   screen: Garage,
+  //   navigationOptions: { header: null }
+  // },
+  // Dashboard: {
+  //   screen: Dashboard,
+  //   navigationOptions: { header: null }
+  // },
   Single: {
     screen: Single,
     navigationOptions: { header: null }
