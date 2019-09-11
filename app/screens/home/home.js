@@ -61,7 +61,7 @@ class Home extends Component {
     //user info, auth state..etc
     const getToken = await Session.getData("token");
     if (getToken) {
-       this.props.getUser(getToken);
+      this.props.getUser(getToken);
     }
     return getToken;
   };
@@ -109,8 +109,8 @@ class Home extends Component {
         <ImageBackground
           source={require("../../../assets/carta3.jpeg")}
           style={{
-            height: device_height,
-            width: device_width
+            height: device_height + 48,
+            width: device_width,
           }}
         >
           <View style={styles.container}>
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     marginTop: 50
   },
   button: {
-    height: 80,
+    height: 200,
     width: 130,
     justifyContent: "center",
     alignSelf: "center",

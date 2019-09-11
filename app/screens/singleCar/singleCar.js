@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 // import styled from "styled-components";
 import FooterComponet from "../footer";
-import { View, StyleSheet, Platform, Dimensions, ImageBackground, Image, Text, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Platform, Dimensions, Image, Text, TouchableOpacity } from "react-native";
+import ImageEditor from "@react-native-community/image-editor";
+import { ImagePicker } from 'expo';
 import {
   Header,
   Left,
@@ -29,9 +31,47 @@ export default class Single extends Component {
   static navigationOptions = {
     header: null
   };
+  state = {
+    // image: 'https://res.cloudinary.com/ogcodes/image/upload/v1565462608/tdghephwnr5z5jl0d2ul.jpg',
+    image: null,
+
+  };
+  _pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      aspect: [4, 3],
+    });
+
+    if (result.cancelled) {
+      console.log('got here');
+      return;
+    }
+
+    let resizedUri = await new Promise((resolve, reject) => {
+      ImageEditor.cropImage(result.uri,
+        {
+          offset: { x: 0, y: 0 },
+          size: { width: result.width, height: result.height },
+          displaySize: { width: 200, height: 200 },
+          resizeMode: 'contain',
+        },
+        (uri) => resolve(uri),
+        () => reject(),
+      );
+    });
+
+    // this gives you a rct-image-store URI or a base64 image tag that
+    // you can use from ImageStore
+
+    this.setState({ image: resizedUri });
+  };
+
+
+
   render() {
     const device_width = Dimensions.get("window").width;
     const device_height = Dimensions.get("window").height;
+    let { image } = this.state;
     let cards = [];
     // for (let i = 0; i < 4; i++) {
     //     cards.push(
@@ -71,7 +111,12 @@ export default class Single extends Component {
             <CardItem>
             </CardItem>
             <CardItem cardBody>
-              <Image source={{ uri: 'https://res.cloudinary.com/ogcodes/image/upload/v1565462608/tdghephwnr5z5jl0d2ul.jpg' }} style={{ height: 200, width: null, flex: 1 }} />
+              <Button onPress={() => this._pickImage}>Pick an image from camera roll</Button>
+
+
+              />
+              {
+                <Image source={{ uri: image }} style={{ width: 200, height: 200, resizeMode: 'contain' }} />}
             </CardItem>
 
           </Card>
@@ -112,11 +157,13 @@ export default class Single extends Component {
           </View>
 
         </Content>
-        <FooterComponet name="garage" props={this.props}/>
+        <FooterComponet name="garage" props={this.props} />
       </Container>
     );
   }
+
 }
+
 const styles = StyleSheet.create({
   card: {},
   head: {
@@ -147,7 +194,7 @@ const styles = StyleSheet.create({
 
   },
   footerActive: {
-    paddingTop:100,
+    paddingTop: 100,
     backgroundColor: "white",
   },
   badge: {

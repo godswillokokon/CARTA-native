@@ -13,6 +13,7 @@ import Single from "../screens/singleCar/singleCar";
 import Dashboard from "../screens/dashboard/dashboard";
 import Register from "../screens/register/register";
 import Report from "../screens/report/report";
+import Maps from "../screens/map/map";
 // import MainScreen from 'app/screens/home/home.js'
 // const homeNavigator = createStackNavigator ({
 //   Home: {
@@ -57,9 +58,12 @@ const MainNavigator = createStackNavigator({
     screen: Register,
     navigationOptions: { header: null }
   },
-
   Report: {
     screen: Report,
+    navigationOptions: { header: null }
+  },
+  Maps: {
+    screen: Maps,
     navigationOptions: { header: null }
   }
 });

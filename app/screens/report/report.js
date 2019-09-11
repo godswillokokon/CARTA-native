@@ -184,7 +184,7 @@ export default class Report extends Component {
                 <View style={{
                   flex: 1, margin: 20, alignItems: "center", alignSelf: "center", backgroundColor: "#DCDCDC", padding: 20,
                 }}>
-                  <TouchableOpacity style={styles.submit}>
+                  <TouchableOpacity style={styles.submit} onPress={() => this.props.navigation.navigate("Maps")}>
                     <FontAwesome name="map-marker" size={35} color={"white"} />
                     <Text style={styles.whiteText}>TRACK CAR</Text>
                   </TouchableOpacity>

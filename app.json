@@ -26,6 +26,14 @@
     "primaryColor": "#652d90",
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.OGcodes.OG",
+      "config": {
+        "googleMaps": {
+          "apiKey": "<AIzaSyACUVY6Far3Yse7geU_v6ycq9SMYD5kNKg>"
+        }
+      }
     }
   }
 }
