@@ -4,7 +4,7 @@ import FooterComponet from "../footer";
 import {
   Text,
   View,
-  AppRegistry,
+  ActivityIndicator,
   StyleSheet,
   Platform,
   TouchableOpacity,
@@ -29,11 +29,33 @@ import {
   Form,
   Item
 } from "native-base";
+import { AppLoading } from "expo";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
 export default class Garage extends Component {
   static navigationOptions = {
     header: null
+  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      checked: true,
+      username: "",
+      email: "",
+      password: "",
+      isLoggedIn: false,
+      isLoading: false,
+      isAppReady: false,
+      authError: null,
+      authReady: false,
+      tokenValidity: null
+    };
+  }
+  // _simulateAdd = (email, password) => {
+  _simulateAdd = () => {
+    this.setState({ isLoading: true });
+    // this.props.add({ email, password });
+    this.props.navigation.navigate("Add");
   };
   render() {
     const device_width = Dimensions.get("window").width;
@@ -77,6 +99,19 @@ export default class Garage extends Component {
           </Right>
         </Header>
         <Content>{cards}</Content>
+        <Button
+          rounded
+          style={styles.add}
+          // onPress={() => this._simulateAdd(this.state.email, this.state.password)}
+          onPress={() => this._simulateAdd()}
+
+        >
+          {this.state.isLoading ? (
+            <ActivityIndicator style={styles.spinner} size="large" color={"white"} />
+          ) : (
+              <FontAwesome name="plus" size={45} color={"white"} />
+            )}
+        </Button>
         <FooterComponet name="garage" props={this.props} />
       </Container>
     );
@@ -96,6 +131,15 @@ const styles = StyleSheet.create({
     elevation: 3,
     margin: 5,
     flexDirection: "row"
+  },
+  add: {
+    left: 275,
+    bottom: 140,
+    padding: 15,
+    backgroundColor: "#652d90",
+    borderRadius: 300,
+    height: 70,
+    width: 70
   },
   head: {
     ...Platform.select({

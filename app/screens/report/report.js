@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import styled from "styled-components";
 import FooterComponet from "../footer";
-import { View, StyleSheet, Platform, Dimensions, ImageBackground, Image, Text, TouchableOpacity, Switch } from "react-native";
+import { View, StyleSheet, Platform, Dimensions, Alert, Image, Text, TouchableOpacity, Switch } from "react-native";
 import {
   Header,
   Left,
@@ -46,12 +46,40 @@ export default class Report extends Component {
     });
   }
   Touch() {
+
     this.setState({
       isOn: true
     });
+
+  }
+  alert() {
+    Alert.alert(
+      'Warning',
+      'Are you sure?',
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'On Car',
+          style: 'destructive',
+          onPress: () => this.UnTouch(),
+
+        },
+        {
+          text: 'Kill Car',
+          style: 'destructive',
+          onPress: () => this.Touch()
+        },
+      ],
+      { cancelable: false },
+    );
   }
   Clicked() {
-    this.state.isOn ? this.UnTouch() : this.Touch();
+
+    this.state.isOn ? this.UnTouch() : this.Touch()
+
     // if (this.state.checked) return console.log("checked");
     // if (!this.state.checked) return console.log("unchecked");
 
@@ -167,7 +195,7 @@ export default class Report extends Component {
 
             </View> : <View >
                 <View style={{
-                  flex: 1, margin: 20, alignItems: "center", alignSelf: "center", backgroundColor: "#DCDCDC", padding: 20,
+                  flex: 1, margin: 20, alignItems: "center", alignSelf: "center", padding: 20,
                 }}>
                   <FontAwesome name="ban" size={65} color={"#652d90"} />
                   <ToggleSwitch
@@ -177,12 +205,12 @@ export default class Report extends Component {
                     label={this.state.label}
                     labelStyle={{ color: "#652d90", fontWeight: "900" }}
                     size="large"
-                    onToggle={this.Clicked.bind(this)}
+                    onToggle={this.alert.bind(this)}
 
                   />
                 </View>
                 <View style={{
-                  flex: 1, margin: 20, alignItems: "center", alignSelf: "center", backgroundColor: "#DCDCDC", padding: 20,
+                  flex: 1, margin: 20, alignItems: "center", alignSelf: "center", padding: 20,
                 }}>
                   <TouchableOpacity style={styles.submit} onPress={() => this.props.navigation.navigate("Maps")}>
                     <FontAwesome name="map-marker" size={35} color={"white"} />

@@ -95,3 +95,11 @@ export const GetUserData = token => async dispatch => {
     return 401;
   }
 };
+// color
+// carphoto
+// vin
+// model
+// regN
+// description
+// brand
+// serialNo

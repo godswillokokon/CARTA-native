@@ -5,7 +5,7 @@ import Login from "../screens/signUp/signUp";
 import Garage from "../screens/garage";
 import Profile from "../screens/profile";
 import Single from "../screens/singleCar/singleCar";
-
+import Add from "../screens/addCar/index";
 // import ResetPassword from "./components/resetPassword/resetPassword";
 // import UserGuide from "./components/userGuide/userGuide";
 // import ContactUs from "./components/contactUs/contactUs";
@@ -42,30 +42,34 @@ const MainNavigator = createStackNavigator({
   //   screen: Profile,
   //   navigationOptions: { header: null }
   // },
-  // Garage: {
-  //   screen: Garage,
-  //   navigationOptions: { header: null }
-  // },
+  Garage: {
+    screen: Garage,
+    navigationOptions: { header: null }
+  },
   // Dashboard: {
   //   screen: Dashboard,
   //   navigationOptions: { header: null }
   // },
-  Single: {
-    screen: Single,
+  Add: {
+    screen: Add,
     navigationOptions: { header: null }
   },
-  Register: {
-    screen: Register,
-    navigationOptions: { header: null }
-  },
-  Report: {
-    screen: Report,
-    navigationOptions: { header: null }
-  },
-  Maps: {
-    screen: Maps,
-    navigationOptions: { header: null }
-  }
+  // Single: {
+  //   screen: Single,
+  //   navigationOptions: { header: null }
+  // },
+  // Register: {
+  //   screen: Register,
+  //   navigationOptions: { header: null }
+  // },
+  // Report: {
+  //   screen: Report,
+  //   navigationOptions: { header: null }
+  // },
+  // Maps: {
+  //   screen: Maps,
+  //   navigationOptions: { header: null }
+  // }
 });
 
 const AppContainer = createAppContainer(MainNavigator);

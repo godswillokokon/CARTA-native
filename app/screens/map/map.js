@@ -49,6 +49,7 @@ export default class Maps extends React.Component {
 
     } else {
       console.log("location found");
+      console.log(this.state.location.coords)
     }
 
     return (
@@ -57,8 +58,8 @@ export default class Maps extends React.Component {
           initialRegion={{
             latitude: this.state.location.coords.latitude,
             longitude: this.state.location.coords.longitude,
-            latitudeDelta: 0.3,
-            longitudeDelta: 0.3
+            latitudeDelta: 0.110028 / 4,
+            longitudeDelta: 0.110028 / 4
           }}
           provider={PROVIDER_GOOGLE} // remove if not using Google Maps
           style={styles.map}
