@@ -109,7 +109,7 @@ class Home extends Component {
         <ImageBackground
           source={require("../../../assets/carta3.jpeg")}
           style={{
-            height: device_height + 48,
+            height: device_height + 78,
             width: device_width,
           }}
         >

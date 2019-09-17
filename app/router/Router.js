@@ -11,6 +11,7 @@ import Dashboard from "../screens/dashboard/dashboard";
 import Register from "../screens/register/register";
 import Report from "../screens/report/report";
 import Maps from "../screens/map/map";
+import Feedback from "../screens/feedback/feedback";
 // import MainScreen from 'app/screens/home/home.js'
 // const homeNavigator = createStackNavigator ({
 //   Home: {
@@ -47,6 +48,10 @@ const MainNavigator = createStackNavigator({
     screen: Dashboard,
     navigationOptions: { header: null }
   },
+  Maps: {
+    screen: Maps,
+    navigationOptions: { header: null }
+  },
   Add: {
     screen: Add,
     navigationOptions: { header: null }
@@ -63,8 +68,8 @@ const MainNavigator = createStackNavigator({
     screen: Report,
     navigationOptions: { header: null }
   },
-  Maps: {
-    screen: Maps,
+  Feedback: {
+    screen: Feedback,
     navigationOptions: { header: null }
   }
 });

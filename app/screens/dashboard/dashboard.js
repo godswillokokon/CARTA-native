@@ -24,6 +24,7 @@ import {
   Textarea
 } from "native-base";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import Head from "../header";
 
 export default class Dashboard extends Component {
   static navigationOptions = {
@@ -52,25 +53,13 @@ export default class Dashboard extends Component {
     // }
     return (
       <Container style={{ height: device_height, width: device_width }}>
-        <Header style={styles.head}>
-          <Left style={{ marginTop: 5 }}>
-            <Button transparent onPress={() => this.props.navigation.navigate("signUp")}>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body style={styles.body}>
-            <Text style={styles.title}></Text>
-          </Body>
-          <Right style={{ marginRight: 10 }}>
-            <FontAwesome name="ellipsis-v" size={20} color={"white"} />
-          </Right>
-        </Header>
+        <Head navigation={this.props.navigation} />
 
         <Content>
 
 
         </Content>
-        <FooterComponet name="overview" props={this.props}/>
+        <FooterComponet name="overview" props={this.props} />
       </Container>
     );
   }

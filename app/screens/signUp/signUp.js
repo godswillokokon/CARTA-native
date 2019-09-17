@@ -144,7 +144,7 @@ class SignUp extends Component {
                   <Text>User Guide</Text>
                 </Body>
               </ListItem>
-              <ListItem icon style={styles.lowerBody} onPress={() => this.props.navigation.navigate("contactUs")}>
+              <ListItem icon style={styles.lowerBody} onPress={() => this.props.navigation.navigate("Feedback")}>
                 <Left>
                   <Button disabled style={{ backgroundColor: "#007AFF" }}>
                     <FontAwesome active name="comments" />

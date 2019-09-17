@@ -7,6 +7,7 @@ import { login, resetFailureAction, refreshAuthentication, GetUserData, logout }
 import Session from "../../utils/Session";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import FooterComponet from "../footer";
+import Head from "../header";
 // import console = require("console");
 // import console = require("console");
 // import console = require("console");
@@ -49,19 +50,7 @@ class Profile extends Component {
     if (!this.state.onEdit) {
       return (
         <Container>
-          <Header style={styles.head}>
-            <Left style={{ marginTop: 5 }}>
-              <Button transparent onPress={() => this.props.navigation.navigate("signUp")}>
-                <Icon name="arrow-back" />
-              </Button>
-            </Left>
-            <Body style={styles.body}>
-              <Text style={styles.title} />
-            </Body>
-            <Right style={{ marginRight: 10 }}>
-              <FontAwesome name="ellipsis-v" size={20} color={"white"} />
-            </Right>
-          </Header>
+          <Head navigation={this.props.navigation} />
 
           <Content>
             <View style={styles.image}>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import styled from "styled-components";
 import FooterComponet from "../footer";
-import { View, StyleSheet, Platform, Dimensions, Alert, Image, Text, TouchableOpacity, Switch } from "react-native";
+import { View, StyleSheet, Platform, Dimensions, Alert, Image, Text, TouchableOpacity, Switch, Picker } from "react-native";
 import {
   Header,
   Left,
@@ -25,6 +25,8 @@ import {
 } from "native-base";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import ToggleSwitch from 'toggle-switch-react-native';
+import Head from "../header";
+
 
 export default class Report extends Component {
   constructor(props) {
@@ -111,19 +113,7 @@ export default class Report extends Component {
     return (
 
       <Container style={{ height: device_height, width: device_width }}>
-        <Header style={styles.head}>
-          <Left style={{ marginTop: 5 }}>
-            <Button transparent >
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body style={styles.body}>
-            <Text style={styles.title}></Text>
-          </Body>
-          <Right style={{ marginRight: 10 }}>
-            <FontAwesome name="ellipsis-v" size={20} color={"white"} />
-          </Right>
-        </Header>
+        <Head navigation={this.props.navigation} />
 
         <Content >
           {
@@ -180,8 +170,16 @@ export default class Report extends Component {
                   </Text>
                 </Item>
                 <Item floatingLabel>
-                  <Label>Last location seen*</Label>
-                  <Input name={"lastLoc"} type="text" />
+                  <Label>Select Police Station*</Label>
+                  <Picker
+                    selectedValue={this.state.language}
+                    style={{ height: 50, width: 100 }}
+                    onValueChange={(itemValue, itemIndex) =>
+                      this.setState({ language: itemValue })
+                    }>
+                    <Picker.Item label="Java" value="java" />
+                    <Picker.Item label="JavaScript" value="js" />
+                  </Picker>
                 </Item>
                 <Item floatingLabel>
                   <Label>Addition Info </Label>

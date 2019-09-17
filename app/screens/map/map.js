@@ -2,6 +2,8 @@ import React from 'react';
 import { View, StyleSheet, Platform, Dimensions, ImageBackground, Image, Text, TouchableOpacity } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Polyline, Marker } from 'react-native-maps';
 import Expo from "expo";
+import Head from "../header";
+import FooterComponet from "../footer";
 
 export default class Maps extends React.Component {
   state = {
@@ -54,6 +56,7 @@ export default class Maps extends React.Component {
 
     return (
       <View style={styles.container}>
+        <Head navigation={this.props.navigation} />
         <MapView
           initialRegion={{
             latitude: this.state.location.coords.latitude,
@@ -94,6 +97,7 @@ export default class Maps extends React.Component {
             strokeWidth={5}
           />
         </MapView>
+        <FooterComponet name="garage" props={this.props} />
       </View>
     );
   }

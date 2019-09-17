@@ -35,6 +35,7 @@ import get from "lodash/get";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import Session from "../../utils/Session";
 import { resetFailureAction, refreshAuthentication, GetUserData, logout, GetUserCar } from "../../redux/actions/UserActions";
+import Head from "../header";
 
 class Garage extends Component {
   static navigationOptions = {
@@ -52,7 +53,8 @@ class Garage extends Component {
       isAppReady: false,
       authError: null,
       authReady: false,
-      tokenValidity: null
+      tokenValidity: null,
+      data: {},
     };
   }
   // _simulateAdd = (email, password) => {
@@ -62,6 +64,7 @@ class Garage extends Component {
     this.props.navigation.navigate("Add");
   };
   render() {
+    const { cars } = this.props;
     const device_width = Dimensions.get("window").width;
     const device_height = Dimensions.get("window").height;
     let cards = [];
@@ -88,20 +91,8 @@ class Garage extends Component {
     }
     return (
       <Container style={{ height: device_height, width: device_width }}>
-        <Header style={styles.head}>
-          {console.log(this.props)}
-          <Left style={{ marginTop: 5 }}>
-            <Button transparent>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body style={styles.body}>
-            <Text style={styles.title}></Text>
-          </Body>
-          <Right style={{ marginRight: 10 }}>
-            <FontAwesome name="ellipsis-v" size={20} color={"white"} />
-          </Right>
-        </Header>
+        <Head navigation={this.props.navigation} />
+
         <Content>{cards}</Content>
         <Button
           rounded
@@ -121,8 +112,10 @@ class Garage extends Component {
     );
   }
 }
-const mapStateToProps = ({ user }) => ({
-  auth: user
+const mapStateToProps = ({ cars }) => ({
+  // const { cars } = state;
+
+  // return { cars: cars };
 });
 
 const mapDispatchToProps = dispatch => ({

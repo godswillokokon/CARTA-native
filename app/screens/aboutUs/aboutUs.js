@@ -18,6 +18,7 @@ import {
 } from "native-base";
 import { Text, Image, AppRegistry, StyleSheet, Platform, TouchableOpacity, View } from "react-native";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import Head from "../header";
 
 export default class AboutUs extends Component {
   static navigationOptions = {
@@ -29,100 +30,88 @@ export default class AboutUs extends Component {
   }
   render() {
     return <Container>
-        <Header style={styles.head}>
-          <Left style={{ marginTop: 20 }}>
-            <Button transparent>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body style={styles.body}>
-            <Text style={styles.title}>About us</Text>
-          </Body>
-          <Right>
-            <FontAwesome name="home" size={30} color={"white"} />
-          </Right>
-        </Header>
-        <Content>
-          <Text style={styles.photo}>
-            <Image source={require("../../assets/Carta.png")} style={{ width: 452, height: 250 }} />
+      <Head navigation={this.props.navigation} />
+      <Content>
+        <Text style={styles.photo}>
+          <Image source={require("../../assets/Carta.png")} style={{ width: 452, height: 250 }} />
+        </Text>
+        <Text style={styles.version}>v1.0.0</Text>
+        <Text style={styles.tagLine}>
+          Now you have a car alert system.
           </Text>
-          <Text style={styles.version}>v1.0.0</Text>
-          <Text style={styles.tagLine}>
-            Now you have a car alert system.
-          </Text>
-          <Card>
-            <TouchableOpacity>
-              <CardItem>
-                <Left>
-                  <FontAwesome active name="hand-peace-o" size={25} />
-                </Left>
-                <Text>Special Thanks</Text>
-                <Right>
-                  <Icon name="arrow-forward" />
-                </Right>
-              </CardItem>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <CardItem>
-                <Left>
-                  <FontAwesome active name="handshake-o" size={25} />
-                </Left>
-                <Text>User Agreement</Text>
-                <Right>
-                  <Icon name="arrow-forward" />
-                </Right>
-              </CardItem>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <CardItem>
-                <Left>
-                  <FontAwesome active name="briefcase" size={25} />
-                </Left>
-                <Text>Private Policy</Text>
-                <Right>
-                  <Icon name="arrow-forward" />
-                </Right>
-              </CardItem>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <CardItem>
-                <Left>
-                  <FontAwesome active name="comments-o" size={25} />
-                </Left>
-                <Text>Contact us</Text>
-                <Right>
-                  <Icon name="arrow-forward" />
-                </Right>
-              </CardItem>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <CardItem>
-                <Left>
-                  <FontAwesome active name="arrow-circle-o-up" size={25} />
-                </Left>
-                <Text>Check Update</Text>
-                <Right>
-                  <Icon name="arrow-forward" />
-                </Right>
-              </CardItem>
-            </TouchableOpacity>
-          </Card>
-          <View style={styles.socials}>
-            <TouchableOpacity style={styles.fb}>
-              <FontAwesome active name="facebook-square" size={35} color={"black"} />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.tweep}>
-              <FontAwesome active name="twitter-square" size={35} color={"black"} />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.ig}>
-              <FontAwesome active name="instagram" size={35} color={"black"} />
-            </TouchableOpacity>
-          </View>
-          <Footer style={styles.footer}>
-            <Text>copyright@2019 CARTA. All Rights Reserved</Text>
-          </Footer>
-        </Content>
-      </Container>;
+        <Card>
+          <TouchableOpacity>
+            <CardItem>
+              <Left>
+                <FontAwesome active name="hand-peace-o" size={25} />
+              </Left>
+              <Text>Special Thanks</Text>
+              <Right>
+                <Icon name="arrow-forward" />
+              </Right>
+            </CardItem>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <CardItem>
+              <Left>
+                <FontAwesome active name="handshake-o" size={25} />
+              </Left>
+              <Text>User Agreement</Text>
+              <Right>
+                <Icon name="arrow-forward" />
+              </Right>
+            </CardItem>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <CardItem>
+              <Left>
+                <FontAwesome active name="briefcase" size={25} />
+              </Left>
+              <Text>Private Policy</Text>
+              <Right>
+                <Icon name="arrow-forward" />
+              </Right>
+            </CardItem>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <CardItem>
+              <Left>
+                <FontAwesome active name="comments-o" size={25} />
+              </Left>
+              <Text>Contact us</Text>
+              <Right>
+                <Icon name="arrow-forward" />
+              </Right>
+            </CardItem>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <CardItem>
+              <Left>
+                <FontAwesome active name="arrow-circle-o-up" size={25} />
+              </Left>
+              <Text>Check Update</Text>
+              <Right>
+                <Icon name="arrow-forward" />
+              </Right>
+            </CardItem>
+          </TouchableOpacity>
+        </Card>
+        <View style={styles.socials}>
+          <TouchableOpacity style={styles.fb}>
+            <FontAwesome active name="facebook-square" size={35} color={"black"} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.tweep}>
+            <FontAwesome active name="twitter-square" size={35} color={"black"} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.ig}>
+            <FontAwesome active name="instagram" size={35} color={"black"} />
+          </TouchableOpacity>
+        </View>
+        <Footer style={styles.footer}>
+          <Text>copyright@2019 CARTA. All Rights Reserved</Text>
+        </Footer>
+      </Content>
+    </Container>;
   }
 }
 AppRegistry.registerComponent("CARTA-AboutUs", () => AboutUs);

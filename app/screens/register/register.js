@@ -54,7 +54,7 @@ class Register extends Component {
     // console.log("your phone width is ",device_width);
 
     return (
-      <Container style={styles.container} style={{ height: device_height, width: device_width }}>
+      <Container style={styles.container} style={{ height: device_height + 80, width: device_width }}>
         <ImageBackground source={require("../../../assets/cartaba.png")} style={{ height: device_height, width: device_width }}>
           <Text style={styles.logo}>
             <Image source={require("../../../assets/Carta.png")} style={{ width: 352, height: 150 }} />

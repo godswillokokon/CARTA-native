@@ -102,7 +102,7 @@ export const GetUserCar = token => async dispatch => {
     console.log("inside 1")
     const response = await Axios.get(`/garage-cars`, await SupportHeader());
     // Session.saveUser(response.data);
-    console.log("inside 2")
+    console.log("inside 2", response);
     dispatch({
       type: "USER_DATA",
       payload: { ...response.data.success }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import styled from "styled-components";
 import FooterComponet from "../footer";
+import Head from "../header";
 import { View, StyleSheet, Platform, Dimensions, Image, Text, TouchableOpacity } from "react-native";
 import ImageEditor from "@react-native-community/image-editor";
 import { ImagePicker } from 'expo';
@@ -79,19 +80,7 @@ export default class Single extends Component {
     let { image } = this.state;
     return (
       <Container style={{ height: device_height, width: device_width }}>
-        <Header style={styles.head}>
-          <Left style={{ marginTop: 5 }}>
-            <Button transparent onPress={() => this.props.navigation.navigate("Garage")}>
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body style={styles.body}>
-            <Text style={styles.title}></Text>
-          </Body>
-          <Right style={{ marginRight: 10 }}>
-            <FontAwesome name="ellipsis-v" size={20} color={"white"} />
-          </Right>
-        </Header>
+        <Head navigation={this.props.navigation} />
 
         <Content>
           <Card>
