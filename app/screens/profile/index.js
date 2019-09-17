@@ -174,7 +174,7 @@ const mapDispatchToProps = dispatch => ({
   // onLogout: () => dispatch(logout()),
   // onSignUp: data => dispatch(createAccount(data)),
   // resetFailureAction: () => dispatch(resetFailureAction()),
-  // getUser: token => dispatch(GetUserData(token)),
+  getUser: token => dispatch(GetUserData(token)),
   // refreshAuthentication: token => dispatch(refreshAuthentication(token))
 });
 export default connect(

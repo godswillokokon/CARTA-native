@@ -30,9 +30,13 @@ import {
   Item
 } from "native-base";
 import { AppLoading } from "expo";
+import { connect } from "react-redux";
+import get from "lodash/get";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import Session from "../../utils/Session";
+import { resetFailureAction, refreshAuthentication, GetUserData, logout, GetUserCar } from "../../redux/actions/UserActions";
 
-export default class Garage extends Component {
+class Garage extends Component {
   static navigationOptions = {
     header: null
   };
@@ -117,6 +121,23 @@ export default class Garage extends Component {
     );
   }
 }
+const mapStateToProps = ({ user }) => ({
+  auth: user
+});
+
+const mapDispatchToProps = dispatch => ({
+  // onLogin: data => dispatch(login(data)),
+  onLogout: () => dispatch(logout()),
+  // onSignUp: data => dispatch(createAccount(data)),
+  resetFailureAction: () => dispatch(resetFailureAction()),
+  getCar: token => dispatch(GetUserCar(token)),
+  getUser: token => dispatch(GetUserData(token)),
+  refreshAuthentication: token => dispatch(refreshAuthentication(token))
+});
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Garage);
 
 const styles = StyleSheet.create({
   card: {

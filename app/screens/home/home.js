@@ -20,7 +20,7 @@ import { Button } from "native-base";
 import Swipe from "./swiper";
 import renderIf from "../renderIf";
 import Session from "../../utils/Session";
-import { resetFailureAction, refreshAuthentication, GetUserData, logout } from "../../redux/actions/UserActions";
+import { resetFailureAction, refreshAuthentication, GetUserData, logout, GetUserCar } from "../../redux/actions/UserActions";
 
 class Home extends Component {
   static navigationOptions = {
@@ -158,6 +158,7 @@ const mapDispatchToProps = dispatch => ({
   onLogout: () => dispatch(logout()),
   // onSignUp: data => dispatch(createAccount(data)),
   resetFailureAction: () => dispatch(resetFailureAction()),
+  getCar: token => dispatch(GetUserCar(token)),
   getUser: token => dispatch(GetUserData(token)),
   refreshAuthentication: token => dispatch(refreshAuthentication(token))
 });

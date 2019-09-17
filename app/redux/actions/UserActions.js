@@ -82,8 +82,27 @@ export const refreshAuthentication = token => async dispatch => {
 
 export const GetUserData = token => async dispatch => {
   try {
-    const response = await Axios.get("/profile", await SupportHeader());
+    console.log("inside 1")
+    const response = await Axios.get(`/profile`, await SupportHeader());
     // Session.saveUser(response.data);
+    console.log("inside 2")
+    dispatch({
+      type: "USER_DATA",
+      payload: { ...response.data.success }
+    });
+    return response.data.success;
+  } catch (e) {
+    // toast.error("Error Notification !");
+    Session.logout();
+    return 401;
+  }
+};
+export const GetUserCar = token => async dispatch => {
+  try {
+    console.log("inside 1")
+    const response = await Axios.get(`/garage-cars`, await SupportHeader());
+    // Session.saveUser(response.data);
+    console.log("inside 2")
     dispatch({
       type: "USER_DATA",
       payload: { ...response.data.success }
